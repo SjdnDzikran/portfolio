@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../utils/navigation_service.dart';
 
 class PortfolioSliverAppBar extends StatelessWidget {
   const PortfolioSliverAppBar({super.key});
@@ -14,23 +15,17 @@ class PortfolioSliverAppBar extends StatelessWidget {
       floating: true, // Shows when scrolling up
       snap: true,     // Snaps to show/hide
       pinned: false,  // Doesn't stay pinned at top
-      title: Text(
-        'Dzikran Azka Sajidan',
-        style: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.w600,
-          color: const Color(0xFF202124),
-        ),
+      centerTitle: true,
+      title: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          _buildNavItem('About'),
+          _buildNavItem('Projects'),
+          _buildNavItem('Skills'),
+          _buildNavItem('Experience'),
+          _buildNavItem('Contact'),
+        ],
       ),
-      actions: [
-        // Navigation items
-        _buildNavItem('About'),
-        _buildNavItem('Projects'),
-        _buildNavItem('Skills'),
-        _buildNavItem('Experience'),
-        _buildNavItem('Contact'),
-        const SizedBox(width: 24), // Right padding
-      ],
     );
   }
   
@@ -39,11 +34,10 @@ class PortfolioSliverAppBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: TextButton(
         onPressed: () {
-          // TODO: Implement navigation
+          NavigationService.scrollToSection(title);
         },
         style: TextButton.styleFrom(
           splashFactory: NoSplash.splashFactory,
-          overlayColor: Colors.transparent,
         ),
         child: Text(
           title,
@@ -72,23 +66,17 @@ class PortfolioAppBar extends StatelessWidget implements PreferredSizeWidget {
       shadowColor: Colors.grey.withAlpha(25),
       toolbarHeight: 80,
       automaticallyImplyLeading: false, // Remove back button
-      title: Text(
-        'Dzikran Azka Sajidan',
-        style: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.w600,
-          color: const Color(0xFF202124),
-        ),
+      centerTitle: true,
+      title: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          _buildNavItem('About'),
+          _buildNavItem('Projects'),
+          _buildNavItem('Skills'),
+          _buildNavItem('Experience'),
+          _buildNavItem('Contact'),
+        ],
       ),
-      actions: [
-        // Navigation items
-        _buildNavItem('About'),
-        _buildNavItem('Projects'),
-        _buildNavItem('Skills'),
-        _buildNavItem('Experience'),
-        _buildNavItem('Contact'),
-        const SizedBox(width: 24), // Right padding
-      ],
     );
   }
   
@@ -97,7 +85,7 @@ class PortfolioAppBar extends StatelessWidget implements PreferredSizeWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: TextButton(
         onPressed: () {
-          // TODO: Implement navigation
+          NavigationService.scrollToSection(title);
         },
         style: TextButton.styleFrom(
           splashFactory: NoSplash.splashFactory,

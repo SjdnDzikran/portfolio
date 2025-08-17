@@ -7,20 +7,10 @@ import '../widgets/projects_section.dart';
 import '../widgets/experience_section.dart';
 import '../widgets/contact_section.dart';
 import '../widgets/footer_widget.dart';
+import '../utils/navigation_service.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
-  // Define sections for lazy loading
-  static const List<Widget> _sections = [
-    HeroSection(),
-    AboutSection(),
-    SkillsSection(),
-    ProjectsSection(),
-    ExperienceSection(),
-    ContactSection(),
-    FooterWidget(),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -32,13 +22,41 @@ class HomePage extends StatelessWidget {
         ],
         body: CustomScrollView(
           slivers: [
-            // Sections with lazy loading using SliverChildBuilderDelegate
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) => _sections[index],
-                childCount: _sections.length,
-              ),
+            // Hero Section (no key needed as it's always at top)
+            const SliverToBoxAdapter(child: HeroSection()),
+            
+            // About Section
+            SliverToBoxAdapter(
+              key: NavigationService.getSectionKey('About'),
+              child: const AboutSection(),
             ),
+            
+            // Skills Section
+            SliverToBoxAdapter(
+              key: NavigationService.getSectionKey('Skills'),
+              child: const SkillsSection(),
+            ),
+            
+            // Projects Section
+            SliverToBoxAdapter(
+              key: NavigationService.getSectionKey('Projects'),
+              child: const ProjectsSection(),
+            ),
+            
+            // Experience Section
+            SliverToBoxAdapter(
+              key: NavigationService.getSectionKey('Experience'),
+              child: const ExperienceSection(),
+            ),
+            
+            // Contact Section
+            SliverToBoxAdapter(
+              key: NavigationService.getSectionKey('Contact'),
+              child: const ContactSection(),
+            ),
+            
+            // Footer
+            const SliverToBoxAdapter(child: FooterWidget()),
           ],
         ),
       ),
