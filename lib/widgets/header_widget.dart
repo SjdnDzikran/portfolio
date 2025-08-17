@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class HeaderWidget extends StatelessWidget {
-  const HeaderWidget({super.key});
+class PortfolioSliverAppBar extends StatelessWidget {
+  const PortfolioSliverAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,18 +14,23 @@ class HeaderWidget extends StatelessWidget {
       floating: true, // Shows when scrolling up
       snap: true,     // Snaps to show/hide
       pinned: false,  // Doesn't stay pinned at top
-      centerTitle: true,
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _buildNavItem('About'),
-          _buildNavItem('Projects'),
-          _buildNavItem('Skills'),
-          _buildNavItem('Experience'),
-          _buildNavItem('Contact'),
-        ],
+      title: Text(
+        'Dzikran Azka Sajidan',
+        style: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
+          color: const Color(0xFF202124),
+        ),
       ),
+      actions: [
+        // Navigation items
+        _buildNavItem('About'),
+        _buildNavItem('Projects'),
+        _buildNavItem('Skills'),
+        _buildNavItem('Experience'),
+        _buildNavItem('Contact'),
+        const SizedBox(width: 24), // Right padding
+      ],
     );
   }
   
@@ -38,6 +43,7 @@ class HeaderWidget extends StatelessWidget {
         },
         style: TextButton.styleFrom(
           splashFactory: NoSplash.splashFactory,
+          overlayColor: Colors.transparent,
         ),
         child: Text(
           title,
@@ -66,18 +72,23 @@ class PortfolioAppBar extends StatelessWidget implements PreferredSizeWidget {
       shadowColor: Colors.grey.withAlpha(25),
       toolbarHeight: 80,
       automaticallyImplyLeading: false, // Remove back button
-      centerTitle: true,
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _buildNavItem('About'),
-          _buildNavItem('Projects'),
-          _buildNavItem('Skills'),
-          _buildNavItem('Experience'),
-          _buildNavItem('Contact'),
-        ],
+      title: Text(
+        'Dzikran Azka Sajidan',
+        style: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
+          color: const Color(0xFF202124),
+        ),
       ),
+      actions: [
+        // Navigation items
+        _buildNavItem('About'),
+        _buildNavItem('Projects'),
+        _buildNavItem('Skills'),
+        _buildNavItem('Experience'),
+        _buildNavItem('Contact'),
+        const SizedBox(width: 24), // Right padding
+      ],
     );
   }
   

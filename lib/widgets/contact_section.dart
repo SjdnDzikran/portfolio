@@ -122,7 +122,7 @@ class ContactSection extends StatelessWidget {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.05),
+              color: Colors.grey.withAlpha((0.05*255).round()),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),

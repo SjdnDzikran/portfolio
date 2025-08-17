@@ -88,7 +88,7 @@ class ProjectsSection extends StatelessWidget {
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.05),
+            color: Colors.grey.withAlpha((0.05 * 255).round()),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -102,7 +102,7 @@ class ProjectsSection extends StatelessWidget {
             width: 60,
             height: 60,
             decoration: BoxDecoration(
-              color: const Color(0xFF4285F4).withOpacity(0.1),
+              color: const Color(0xFF4285F4).withAlpha((0.1 * 255).round()),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(
@@ -148,7 +148,7 @@ class ProjectsSection extends StatelessWidget {
             children: technologies.map((tech) => Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
-                color: const Color(0xFF4285F4).withOpacity(0.1),
+                color: const Color(0xFF4285F4).withAlpha((0.1 * 255).round()),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Text(
