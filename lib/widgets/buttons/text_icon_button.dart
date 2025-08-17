@@ -34,6 +34,9 @@ class TextIconButton extends StatelessWidget {
         foregroundColor: effectiveColor,
         padding: padding ?? EdgeInsets.zero,
         splashFactory: NoSplash.splashFactory,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(50),
+        ),
       ),
     );
   }

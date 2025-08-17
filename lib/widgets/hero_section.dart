@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'buttons/buttons.dart';
+import 'package:portfolio/widgets/buttons/primary_button.dart';
+import 'package:portfolio/widgets/buttons/secondary_button.dart';
 
 class HeroSection extends StatelessWidget {
   const HeroSection({super.key});

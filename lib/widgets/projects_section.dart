@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'buttons/buttons.dart';
+import 'package:portfolio/widgets/buttons/text_icon_button.dart';
 
 class ProjectsSection extends StatelessWidget {
   const ProjectsSection({super.key});

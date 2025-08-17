@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'buttons/buttons.dart';
+import 'package:portfolio/widgets/buttons/primary_button.dart';
 
 class ContactSection extends StatelessWidget {
   const ContactSection({super.key});
