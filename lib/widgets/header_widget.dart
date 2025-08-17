@@ -55,7 +55,6 @@ class HeaderWidget extends StatelessWidget {
         },
         style: TextButton.styleFrom(
           splashFactory: NoSplash.splashFactory,
-          overlayColor: Colors.transparent,
         ),
         child: Text(
           title,
