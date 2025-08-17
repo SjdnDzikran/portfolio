@@ -15,7 +15,7 @@ class TextIconButton extends StatelessWidget {
     required this.text,
     required this.icon,
     required this.onPressed,
-    this.padding,
+    this.padding = const EdgeInsets.symmetric(horizontal: 8),
     this.fontSize = 14,
     this.fontWeight = FontWeight.w500,
     this.color,
