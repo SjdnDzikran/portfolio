@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../constants/brand_theme.dart';
+import 'terminal_section.dart';
 
 class SkillsSection extends StatelessWidget {
   const SkillsSection({super.key});
@@ -7,135 +9,135 @@ class SkillsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final isDesktop = screenWidth > 1024;
-    final isTablet = screenWidth > 768 && screenWidth <= 1024;
     
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.symmetric(
-        horizontal: isDesktop ? 80 : (isTablet ? 40 : 24),
-        vertical: isDesktop ? 100 : 60,
-      ),
-      child: Column(
+    return TerminalSection(
+      title: 'Skills & Technologies',
+      backgroundColor: BrandColors.baseDark,
+      child: GridView.count(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        crossAxisCount: isDesktop ? 2 : 1,
+        mainAxisSpacing: BrandTheme.spacing4,
+        crossAxisSpacing: BrandTheme.spacing4,
+        childAspectRatio: isDesktop ? 2.0 : 1.5,
         children: [
-          // Section title
-          Text(
-            'Skills & Technologies',
-            style: TextStyle(
-              fontSize: isDesktop ? 48 : (isTablet ? 40 : 32),
-              fontWeight: FontWeight.w300,
-              color: const Color(0xFF202124),
-              letterSpacing: -1.0,
-            ),
-            textAlign: TextAlign.center,
+          _buildSkillCategory(
+            'MOBILE_DEVELOPMENT',
+            Icons.terminal,
+            ['FLUTTER', 'DART', 'STATE_MANAGEMENT', 'REST_APIS', 'OFFLINE_FIRST_APPS', 'BARCODE_SCANNING'],
+            BrandColors.cream,
           ),
-          
-          const SizedBox(height: 48),
-          
-          // Skills grid
-          Container(
-            constraints: const BoxConstraints(maxWidth: 1200),
-            child: GridView.count(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              crossAxisCount: isDesktop ? 2 : 1,
-              mainAxisSpacing: 32,
-              crossAxisSpacing: 32,
-              childAspectRatio: isDesktop ? 2.5 : 1.8,
-              children: [
-                _buildSkillCategory(
-                  'Mobile Development',
-                  Icons.phone_android,
-                  ['Flutter', 'Dart', 'State Management', 'REST APIs', 'Offline-first apps', 'Barcode scanning'],
-                ),
-                _buildSkillCategory(
-                  'Backend & Web',
-                  Icons.web,
-                  ['ASP.NET Core', 'Blazor', 'C#', 'Microsoft SQL Server', 'JavaScript', 'Next.js'],
-                ),
-                _buildSkillCategory(
-                  'Programming Languages',
-                  Icons.code,
-                  ['Dart', 'C#', 'JavaScript', 'TypeScript', 'React.js'],
-                ),
-                _buildSkillCategory(
-                  'Tools & Practices',
-                  Icons.build,
-                  ['Git', 'Agile', 'Code Quality', 'Team Leadership', 'Mentoring'],
-                ),
-              ],
-            ),
+          _buildSkillCategory(
+            'BACKEND_&_WEB',
+            Icons.web,
+            ['ASP.NET_CORE', 'BLAZOR', 'C#', 'MICROSOFT_SQL_SERVER', 'JAVASCRIPT', 'NEXT.JS'],
+            BrandColors.softGreen,
+          ),
+          _buildSkillCategory(
+            'PROGRAMMING_LANGUAGES',
+            Icons.code,
+            ['DART', 'C#', 'JAVASCRIPT', 'TYPESCRIPT', 'REACT.JS'],
+            BrandColors.purple,
+          ),
+          _buildSkillCategory(
+            'TOOLS_&_PRACTICES',
+            Icons.build,
+            ['GIT', 'AGILE', 'CODE_QUALITY', 'TEAM_LEADERSHIP', 'MENTORING'],
+            BrandColors.brightGreen,
           ),
         ],
       ),
     );
   }
   
-  Widget _buildSkillCategory(String title, IconData icon, List<String> skills) {
-    return Container(
-      padding: const EdgeInsets.all(32),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          color: const Color(0xFFE8EAED),
-          width: 1,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withAlpha((0.05 * 255).round()),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
+  Widget _buildSkillCategory(String title, IconData icon, List<String> skills, Color accentColor) {
+    return GridCard(
+      backgroundColor: BrandColors.cleanWhite,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Category header
           Row(
             children: [
+              Text(
+                '> ',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: BrandColors.brightGreen,
+                   
+                ),
+              ),
               Icon(
                 icon,
-                color: const Color(0xFF4285F4),
-                size: 28,
+                color: accentColor,
+                size: 20,
               ),
-              const SizedBox(width: 12),
-              Text(
-                title,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                  color: Color(0xFF202124),
+              const SizedBox(width: BrandTheme.spacing1),
+              Expanded(
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: BrandColors.baseDark,
+                     
+                  ),
                 ),
               ),
             ],
           ),
           
-          const SizedBox(height: 20),
+          const SizedBox(height: BrandTheme.spacing1),
           
-          // Skills
-          Wrap(
-            spacing: 8,
-            runSpacing: 8,
-            children: skills.map((skill) => Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              decoration: BoxDecoration(
-                color: const Color(0xFFF8F9FA),
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(
-                  color: const Color(0xFFE8EAED),
-                  width: 1,
-                ),
+          // Status line
+          Text(
+            '[ LOADED ] [ ${skills.length}_MODULES ]',
+            style: TextStyle(
+              fontSize: 10,
+              fontWeight: FontWeight.w400,
+              color: BrandColors.mediumGray,
+              letterSpacing: 1.0,
+               
+            ),
+          ),
+          
+          const SizedBox(height: BrandTheme.spacing2),
+          
+          // Skills as terminal output
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: skills.map((skill) => Padding(
+                  padding: const EdgeInsets.only(bottom: 4),
+                  child: Row(
+                    children: [
+                      Text(
+                        '• ',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                          color: accentColor,
+                           
+                        ),
+                      ),
+                      Expanded(
+                        child: Text(
+                          skill,
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: BrandColors.baseDark,
+                             
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )).toList(),
               ),
-              child: Text(
-                skill,
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                  color: Color(0xFF5F6368),
-                ),
-              ),
-            )).toList(),
+            ),
           ),
         ],
       ),

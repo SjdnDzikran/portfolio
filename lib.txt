@@ -1,0 +1,2346 @@
+Directory structure:
+└── lib/
+    ├── coming_soon_page.dart
+    ├── main.dart
+    ├── constants/
+    │   ├── app_constants.dart
+    │   └── brand_theme.dart
+    ├── pages/
+    │   └── home_page.dart
+    ├── utils/
+    │   ├── navigation_helper.dart
+    │   ├── navigation_service.dart
+    │   └── responsive_utils.dart
+    └── widgets/
+        ├── about_section.dart
+        ├── contact_section.dart
+        ├── experience_section.dart
+        ├── footer_widget.dart
+        ├── header_widget.dart
+        ├── hero_section.dart
+        ├── projects_section.dart
+        ├── skills_section.dart
+        ├── terminal_section.dart
+        └── buttons/
+            ├── primary_button.dart
+            ├── secondary_button.dart
+            └── text_icon_button.dart
+
+================================================
+FILE: coming_soon_page.dart
+================================================
+import 'package:flutter/material.dart';
+
+class ComingSoonPage extends StatelessWidget {
+  const ComingSoonPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Center(
+        child: Text(
+          'Coming soon',
+          style: TextStyle(
+            fontSize: 72,
+            fontWeight: FontWeight.w300,
+            color: const Color(0xFF202124),
+            letterSpacing: -2.0,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+================================================
+FILE: main.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:portfolio/constants/brand_theme.dart';
+import 'package:portfolio/pages/home_page.dart';
+
+void main() {
+  runApp(const PortfolioApp());
+}
+
+class PortfolioApp extends StatelessWidget {
+  const PortfolioApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Dzikran Azka Sajidan - Mobile App Developer',
+      debugShowCheckedModeBanner: false,
+      theme: BrandTheme.theme,
+      home: const HomePage(),
+    );
+  }
+}
+
+
+
+================================================
+FILE: constants/app_constants.dart
+================================================
+import 'package:flutter/material.dart';
+
+class AppColors {
+  // Primary colors (Google-inspired)
+  static const Color primary = Color(0xFF4285F4);
+  static const Color primaryLight = Color(0xFF6FA8F5);
+  static const Color primaryDark = Color(0xFF1976D2);
+  
+  // Text colors
+  static const Color textPrimary = Color(0xFF202124);
+  static const Color textSecondary = Color(0xFF5F6368);
+  static const Color textLight = Color(0xFF9AA0A6);
+  
+  // Background colors
+  static const Color background = Colors.white;
+  static const Color backgroundLight = Color(0xFFF8F9FA);
+  static const Color backgroundDark = Color(0xFF202124);
+  
+  // Border colors
+  static const Color border = Color(0xFFE8EAED);
+  static const Color borderLight = Color(0xFFF1F3F4);
+  
+  // Status colors
+  static const Color success = Color(0xFF34A853);
+  static const Color warning = Color(0xFFFBBC04);
+  static const Color error = Color(0xFFEA4335);
+}
+
+class AppTextStyles {
+  // Headings
+  static const TextStyle heading1 = TextStyle(
+    fontSize: 72,
+    fontWeight: FontWeight.w300,
+    color: AppColors.textPrimary,
+    letterSpacing: -2.0,
+    height: 1.1,
+  );
+  
+  static const TextStyle heading2 = TextStyle(
+    fontSize: 48,
+    fontWeight: FontWeight.w300,
+    color: AppColors.textPrimary,
+    letterSpacing: -1.0,
+  );
+  
+  static const TextStyle heading3 = TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textPrimary,
+  );
+  
+  // Body text
+  static const TextStyle bodyLarge = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textSecondary,
+    height: 1.6,
+    letterSpacing: 0.1,
+  );
+  
+  static const TextStyle bodyMedium = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textSecondary,
+    height: 1.5,
+  );
+  
+  static const TextStyle bodySmall = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textSecondary,
+    height: 1.4,
+  );
+  
+  // Labels
+  static const TextStyle labelLarge = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textPrimary,
+  );
+  
+  static const TextStyle labelMedium = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textPrimary,
+  );
+  
+  static const TextStyle labelSmall = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textSecondary,
+  );
+}
+
+class AppSizes {
+  // Spacing
+  static const double spacingXs = 4.0;
+  static const double spacingS = 8.0;
+  static const double spacingM = 16.0;
+  static const double spacingL = 24.0;
+  static const double spacingXl = 32.0;
+  static const double spacingXxl = 48.0;
+  static const double spacingXxxl = 64.0;
+  
+  // Padding
+  static const double paddingS = 12.0;
+  static const double paddingM = 16.0;
+  static const double paddingL = 24.0;
+  static const double paddingXl = 32.0;
+  
+  // Radius
+  static const double radiusS = 8.0;
+  static const double radiusM = 12.0;
+  static const double radiusL = 16.0;
+  static const double radiusXl = 20.0;
+  
+  // Breakpoints
+  static const double mobileBreakpoint = 768;
+  static const double tabletBreakpoint = 1024;
+  static const double desktopBreakpoint = 1200;
+}
+
+class AppStrings {
+  // Personal info
+  static const String name = 'Dzikran Azka Sajidan';
+  static const String title = 'Software Engineer';
+  static const String subtitle = 'Specializing in Mobile App Development & Blockchain Solutions';
+  static const String email = 'dzikran@example.com'; // Update with your real email
+  
+  // Navigation
+  static const String navAbout = 'About';
+  static const String navProjects = 'Projects';
+  static const String navSkills = 'Skills';
+  static const String navExperience = 'Experience';
+  static const String navContact = 'Contact';
+  
+  // Buttons
+  static const String btnViewProjects = 'View Projects';
+  static const String btnContactMe = 'Contact Me';
+  static const String btnSendMessage = 'Send Message';
+  static const String btnViewDemo = 'View Demo';
+  static const String btnViewCode = 'Code';
+  
+  // Section titles
+  static const String sectionAbout = 'About Me';
+  static const String sectionSkills = 'Skills & Technologies';
+  static const String sectionProjects = 'Featured Projects';
+  static const String sectionExperience = 'Experience';
+  static const String sectionContact = 'Get In Touch';
+}
+
+
+
+================================================
+FILE: constants/brand_theme.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class BrandColors {
+  // Primary Palette
+  static const Color baseDark = Color(0xFF15243D);
+  static const Color manelaLight = Color(0xFFF7F0E2);
+  static const Color purple = Color(0xFFC8B9FF);
+  static const Color cream = Color(0xFFFCEAB8);
+  static const Color softGreen = Color(0xFF77FF85);
+  static const Color cleanWhite = Color(0xFFFFFFFF);
+  
+  // Highlight Accent
+  static const Color brightGreen = Color(0xFF52FF00);
+  
+  // Additional colors for better contrast
+  static const Color darkText = Color(0xFF000000);
+  static const Color mediumGray = Color(0xFF666666);
+}
+
+class BrandTheme {
+  static ThemeData get theme {
+    return ThemeData(
+      colorScheme: const ColorScheme(
+        brightness: Brightness.light,
+        primary: BrandColors.brightGreen,
+        onPrimary: BrandColors.baseDark,
+        secondary: BrandColors.purple,
+        onSecondary: BrandColors.baseDark,
+        error: Colors.red,
+        onError: Colors.white,
+        background: BrandColors.manelaLight,
+        onBackground: BrandColors.baseDark,
+        surface: BrandColors.cleanWhite,
+        onSurface: BrandColors.baseDark,
+      ),
+      useMaterial3: true,
+      textTheme: _buildTextTheme(),
+      splashFactory: NoSplash.splashFactory,
+      scaffoldBackgroundColor: BrandColors.manelaLight,
+    );
+  }
+  
+  static TextTheme _buildTextTheme() {
+    return TextTheme(
+      // Headers - Large, bold, pixel/mono
+      headlineLarge: GoogleFonts.jetBrainsMono(
+        fontSize: 48,
+        fontWeight: FontWeight.bold,
+        color: BrandColors.baseDark,
+        height: 1.2,
+      ),
+      headlineMedium: GoogleFonts.jetBrainsMono(
+        fontSize: 36,
+        fontWeight: FontWeight.bold,
+        color: BrandColors.baseDark,
+        height: 1.2,
+      ),
+      headlineSmall: GoogleFonts.jetBrainsMono(
+        fontSize: 28,
+        fontWeight: FontWeight.w600,
+        color: BrandColors.baseDark,
+        height: 1.2,
+      ),
+      
+      // Subheads - Medium, lighter weight
+      titleLarge: GoogleFonts.jetBrainsMono(
+        fontSize: 24,
+        fontWeight: FontWeight.w500,
+        color: BrandColors.baseDark,
+        height: 1.3,
+      ),
+      titleMedium: GoogleFonts.jetBrainsMono(
+        fontSize: 20,
+        fontWeight: FontWeight.w500,
+        color: BrandColors.baseDark,
+        height: 1.3,
+      ),
+      titleSmall: GoogleFonts.jetBrainsMono(
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+        color: BrandColors.baseDark,
+        height: 1.3,
+      ),
+      
+      // Body text - Regular, readable
+      bodyLarge: GoogleFonts.jetBrainsMono(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: BrandColors.baseDark,
+        height: 1.6,
+      ),
+      bodyMedium: GoogleFonts.jetBrainsMono(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        color: BrandColors.baseDark,
+        height: 1.6,
+      ),
+      bodySmall: GoogleFonts.jetBrainsMono(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        color: BrandColors.mediumGray,
+        height: 1.6,
+      ),
+      
+      // Labels and buttons
+      labelLarge: GoogleFonts.jetBrainsMono(
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+        color: BrandColors.baseDark,
+        letterSpacing: 0.5,
+      ),
+      labelMedium: GoogleFonts.jetBrainsMono(
+        fontSize: 12,
+        fontWeight: FontWeight.w600,
+        color: BrandColors.baseDark,
+        letterSpacing: 0.5,
+      ),
+      labelSmall: GoogleFonts.jetBrainsMono(
+        fontSize: 10,
+        fontWeight: FontWeight.w600,
+        color: BrandColors.mediumGray,
+        letterSpacing: 0.5,
+      ),
+    );
+  }
+  
+  // Spacing system - 8px multiples
+  static const double spacing1 = 8.0;   // 1x
+  static const double spacing2 = 16.0;  // 2x
+  static const double spacing3 = 24.0;  // 3x
+  static const double spacing4 = 32.0;  // 4x
+  static const double spacing5 = 40.0;  // 5x
+  static const double spacing6 = 48.0;  // 6x
+  static const double spacing8 = 64.0;  // 8x
+  static const double spacing10 = 80.0; // 10x
+  static const double spacing12 = 96.0; // 12x
+}
+
+class BrandDecorations {
+  // Grid-inspired borders
+  static BoxDecoration gridCard({Color? backgroundColor}) {
+    return BoxDecoration(
+      color: backgroundColor ?? BrandColors.cleanWhite,
+      border: Border.all(
+        color: BrandColors.baseDark,
+        width: 2,
+      ),
+      borderRadius: BorderRadius.zero, // Square edges for pixel aesthetic
+    );
+  }
+  
+  // Terminal-inspired containers
+  static BoxDecoration terminalContainer({Color? backgroundColor}) {
+    return BoxDecoration(
+      color: backgroundColor ?? BrandColors.baseDark,
+      border: Border.all(
+        color: BrandColors.brightGreen,
+        width: 1,
+      ),
+      borderRadius: BorderRadius.zero,
+    );
+  }
+  
+  // Neon glow effect for hover states
+  static BoxDecoration neonGlow({Color glowColor = BrandColors.brightGreen}) {
+    return BoxDecoration(
+      boxShadow: [
+        BoxShadow(
+          color: glowColor.withOpacity(0.3),
+          blurRadius: 8,
+          spreadRadius: 2,
+        ),
+      ],
+    );
+  }
+}
+
+
+
+================================================
+FILE: pages/home_page.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:portfolio/widgets/header_widget.dart';
+import 'package:portfolio/widgets/hero_section.dart';
+import 'package:portfolio/widgets/about_section.dart';
+import 'package:portfolio/widgets/skills_section.dart';
+import 'package:portfolio/widgets/projects_section.dart';
+import 'package:portfolio/widgets/experience_section.dart';
+import 'package:portfolio/widgets/contact_section.dart';
+import 'package:portfolio/widgets/footer_widget.dart';
+import 'package:portfolio/utils/navigation_service.dart';
+import 'package:portfolio/constants/brand_theme.dart';
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final ScrollController _scrollController = ScrollController();
+  bool _showAppBar = false;
+
+  @override
+  void initState() {
+    super.initState();
+    NavigationService.setScrollController(_scrollController);
+    
+    _scrollController.addListener(() {
+      final shouldShow = _scrollController.offset > 200; // Show after scrolling 200px
+      if (shouldShow != _showAppBar) {
+        setState(() {
+          _showAppBar = shouldShow;
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: BrandColors.manelaLight,
+      appBar: _showAppBar ? const PortfolioAppBar() : null,
+      body: SingleChildScrollView(
+        controller: _scrollController,
+        child: Column(
+          children: [
+            // Hero Section (no key needed as it's always at top)
+            HeroSection(),
+            
+            // About Section
+            Container(
+              key: NavigationService.getSectionKey('About'),
+              child: AboutSection(),
+            ),
+            
+            // Skills Section
+            Container(
+              key: NavigationService.getSectionKey('Skills'),
+              child: SkillsSection(),
+            ),
+            
+            // Projects Section
+            Container(
+              key: NavigationService.getSectionKey('Projects'),
+              child: ProjectsSection(),
+            ),
+            
+            // Experience Section
+            Container(
+              key: NavigationService.getSectionKey('Experience'),
+              child: ExperienceSection(),
+            ),
+            
+            // Contact Section
+            Container(
+              key: NavigationService.getSectionKey('Contact'),
+              child: ContactSection(),
+            ),
+            
+            // Footer
+            FooterWidget(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: utils/navigation_helper.dart
+================================================
+import 'package:flutter/material.dart';
+
+class ScrollController {
+  static final GlobalKey aboutKey = GlobalKey();
+  static final GlobalKey projectsKey = GlobalKey();
+  static final GlobalKey skillsKey = GlobalKey();
+  static final GlobalKey experienceKey = GlobalKey();
+  static final GlobalKey contactKey = GlobalKey();
+
+  static void scrollToSection(GlobalKey key) {
+    if (key.currentContext != null) {
+      Scrollable.ensureVisible(
+        key.currentContext!,
+        duration: const Duration(milliseconds: 800),
+        curve: Curves.easeInOut,
+      );
+    }
+  }
+
+  static void scrollToTop() {
+    // This will be implemented when we add the scroll controller to the main page
+  }
+}
+
+class NavigationHelper {
+  static void navigateToSection(String section) {
+    switch (section.toLowerCase()) {
+      case 'about':
+        ScrollController.scrollToSection(ScrollController.aboutKey);
+        break;
+      case 'projects':
+        ScrollController.scrollToSection(ScrollController.projectsKey);
+        break;
+      case 'skills':
+        ScrollController.scrollToSection(ScrollController.skillsKey);
+        break;
+      case 'experience':
+        ScrollController.scrollToSection(ScrollController.experienceKey);
+        break;
+      case 'contact':
+        ScrollController.scrollToSection(ScrollController.contactKey);
+        break;
+    }
+  }
+}
+
+
+
+================================================
+FILE: utils/navigation_service.dart
+================================================
+import 'package:flutter/material.dart';
+
+class NavigationService {
+  static ScrollController? _scrollController;
+  
+  static final Map<String, GlobalKey> _sectionKeys = {
+    'About': GlobalKey(),
+    'Skills': GlobalKey(),
+    'Projects': GlobalKey(),
+    'Experience': GlobalKey(),
+    'Contact': GlobalKey(),
+  };
+
+  static void setScrollController(ScrollController controller) {
+    _scrollController = controller;
+  }
+
+  static GlobalKey getSectionKey(String section) {
+    return _sectionKeys[section] ?? GlobalKey();
+  }
+
+  static void scrollToSection(String section) {
+    final key = _sectionKeys[section];
+    final context = key?.currentContext;
+    
+    if (context != null && _scrollController != null) {
+      final RenderObject? renderObject = context.findRenderObject();
+      if (renderObject is RenderBox) {
+        final position = renderObject.localToGlobal(Offset.zero);
+        final offset = position.dy + _scrollController!.offset - 80; // 80 for AppBar height
+        
+        _scrollController!.animateTo(
+          offset.clamp(0.0, _scrollController!.position.maxScrollExtent),
+          duration: const Duration(milliseconds: 800),
+          curve: Curves.easeInOut,
+        );
+      }
+    }
+  }
+}
+
+
+
+================================================
+FILE: utils/responsive_utils.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:portfolio/constants/app_constants.dart';
+
+class ResponsiveUtils {
+  static bool isMobile(BuildContext context) {
+    return MediaQuery.of(context).size.width < AppSizes.mobileBreakpoint;
+  }
+  
+  static bool isTablet(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    return width >= AppSizes.mobileBreakpoint && width < AppSizes.tabletBreakpoint;
+  }
+  
+  static bool isDesktop(BuildContext context) {
+    return MediaQuery.of(context).size.width >= AppSizes.tabletBreakpoint;
+  }
+  
+  static double getResponsiveFontSize(BuildContext context, double mobile, double tablet, double desktop) {
+    if (isMobile(context)) return mobile;
+    if (isTablet(context)) return tablet;
+    return desktop;
+  }
+  
+  static double getResponsivePadding(BuildContext context, double mobile, double tablet, double desktop) {
+    if (isMobile(context)) return mobile;
+    if (isTablet(context)) return tablet;
+    return desktop;
+  }
+  
+  static int getResponsiveColumns(BuildContext context, int mobile, int tablet, int desktop) {
+    if (isMobile(context)) return mobile;
+    if (isTablet(context)) return tablet;
+    return desktop;
+  }
+  
+  static EdgeInsets getResponsiveHorizontalPadding(BuildContext context) {
+    return EdgeInsets.symmetric(
+      horizontal: getResponsivePadding(context, 24, 40, 80),
+    );
+  }
+  
+  static EdgeInsets getResponsiveVerticalPadding(BuildContext context) {
+    return EdgeInsets.symmetric(
+      vertical: getResponsivePadding(context, 60, 80, 100),
+    );
+  }
+  
+  static EdgeInsets getResponsivePaddingAll(BuildContext context) {
+    return EdgeInsets.symmetric(
+      horizontal: getResponsivePadding(context, 24, 40, 80),
+      vertical: getResponsivePadding(context, 60, 80, 100),
+    );
+  }
+}
+
+class ResponsiveText extends StatelessWidget {
+  final String text;
+  final double mobileSize;
+  final double tabletSize;
+  final double desktopSize;
+  final FontWeight? fontWeight;
+  final Color? color;
+  final double? letterSpacing;
+  final double? height;
+  final TextAlign? textAlign;
+  final int? maxLines;
+  final TextOverflow? overflow;
+
+  const ResponsiveText(
+    this.text, {
+    super.key,
+    required this.mobileSize,
+    required this.tabletSize,
+    required this.desktopSize,
+    this.fontWeight,
+    this.color,
+    this.letterSpacing,
+    this.height,
+    this.textAlign,
+    this.maxLines,
+    this.overflow,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: ResponsiveUtils.getResponsiveFontSize(context, mobileSize, tabletSize, desktopSize),
+        fontWeight: fontWeight,
+        color: color,
+        letterSpacing: letterSpacing,
+        height: height,
+      ),
+      textAlign: textAlign,
+      maxLines: maxLines,
+      overflow: overflow,
+    );
+  }
+}
+
+class ResponsiveContainer extends StatelessWidget {
+  final Widget child;
+  final double? mobileWidth;
+  final double? tabletWidth;
+  final double? desktopWidth;
+  final double? height;
+  final EdgeInsetsGeometry? padding;
+  final EdgeInsetsGeometry? margin;
+  final Decoration? decoration;
+  final AlignmentGeometry? alignment;
+
+  const ResponsiveContainer({
+    super.key,
+    required this.child,
+    this.mobileWidth,
+    this.tabletWidth,
+    this.desktopWidth,
+    this.height,
+    this.padding,
+    this.margin,
+    this.decoration,
+    this.alignment,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    double? width;
+    if (ResponsiveUtils.isMobile(context) && mobileWidth != null) {
+      width = mobileWidth;
+    } else if (ResponsiveUtils.isTablet(context) && tabletWidth != null) {
+      width = tabletWidth;
+    } else if (ResponsiveUtils.isDesktop(context) && desktopWidth != null) {
+      width = desktopWidth;
+    }
+
+    return Container(
+      width: width,
+      height: height,
+      padding: padding,
+      margin: margin,
+      decoration: decoration,
+      alignment: alignment,
+      child: child,
+    );
+  }
+}
+
+
+
+================================================
+FILE: widgets/about_section.dart
+================================================
+
+
+
+================================================
+FILE: widgets/contact_section.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:portfolio/widgets/buttons/primary_button.dart';
+
+class ContactSection extends StatelessWidget {
+  const ContactSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isDesktop = screenWidth > 1024;
+    final isTablet = screenWidth > 768 && screenWidth <= 1024;
+    
+    return Container(
+      width: double.infinity,
+      padding: EdgeInsets.symmetric(
+        horizontal: isDesktop ? 80 : (isTablet ? 40 : 24),
+        vertical: isDesktop ? 100 : 60,
+      ),
+      color: const Color(0xFFF8F9FA),
+      child: Column(
+        children: [
+          // Section title
+          Text(
+            'Get In Touch',
+            style: TextStyle(
+              fontSize: isDesktop ? 48 : (isTablet ? 40 : 32),
+              fontWeight: FontWeight.w300,
+              color: const Color(0xFF202124),
+              letterSpacing: -1.0,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          
+          const SizedBox(height: 24),
+          
+          // Subtitle
+          Container(
+            constraints: const BoxConstraints(maxWidth: 600),
+            child: Text(
+              'Have a project in mind or want to discuss opportunities? I\'d love to hear from you!',
+              style: TextStyle(
+                fontSize: isDesktop ? 18 : 16,
+                fontWeight: FontWeight.w400,
+                color: const Color(0xFF5F6368),
+                height: 1.5,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          
+          const SizedBox(height: 48),
+          
+          // Contact options
+          Container(
+            constraints: const BoxConstraints(maxWidth: 800),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: _buildContactCard(
+                    'Email',
+                    'sjdn.dzikran@email.com',
+                    Icons.email_outlined,
+                    () {
+                      // TODO: Open email client
+                    },
+                  ),
+                ),
+                const SizedBox(width: 24),
+                Expanded(
+                  child: _buildContactCard(
+                    'LinkedIn',
+                    'linkedin.com/in/dzikranazkasajidan',
+                    Icons.business,
+                    () {
+                      // TODO: Open LinkedIn
+                    },
+                  ),
+                ),
+                const SizedBox(width: 24),
+                Expanded(
+                  child: _buildContactCard(
+                    'GitHub',
+                    'github.com/SjdnDzikran',
+                    Icons.code,
+                    () {
+                      // TODO: Open GitHub
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+          
+          const SizedBox(height: 48),
+          
+          // Primary contact button
+          PrimaryButton(
+            text: 'Send Message',
+            onPressed: () {
+              // TODO: Open email or contact form
+            },
+          ),
+        ],
+      ),
+    );
+  }
+  
+  Widget _buildContactCard(String title, String subtitle, IconData icon, VoidCallback onTap) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(12),
+      splashFactory: NoSplash.splashFactory,
+      child: Container(
+        padding: const EdgeInsets.all(24),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: const Color(0xFFE8EAED),
+            width: 1,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withAlpha((0.05*255).round()),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Column(
+          children: [
+            Icon(
+              icon,
+              color: const Color(0xFF4285F4),
+              size: 32,
+            ),
+            const SizedBox(height: 12),
+            Text(
+              title,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: Color(0xFF202124),
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              subtitle,
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+                color: Color(0xFF5F6368),
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: widgets/experience_section.dart
+================================================
+import 'package:flutter/material.dart';
+
+class ExperienceSection extends StatelessWidget {
+  const ExperienceSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isDesktop = screenWidth > 1024;
+    final isTablet = screenWidth > 768 && screenWidth <= 1024;
+    
+    return Container(
+      width: double.infinity,
+      padding: EdgeInsets.symmetric(
+        horizontal: isDesktop ? 80 : (isTablet ? 40 : 24),
+        vertical: isDesktop ? 100 : 60,
+      ),
+      child: Column(
+        children: [
+          // Section title
+          Text(
+            'Experience',
+            style: TextStyle(
+              fontSize: isDesktop ? 48 : (isTablet ? 40 : 32),
+              fontWeight: FontWeight.w300,
+              color: const Color(0xFF202124),
+              letterSpacing: -1.0,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          
+          const SizedBox(height: 48),
+          
+          // Experience timeline
+          Container(
+            constraints: const BoxConstraints(maxWidth: 800),
+            child: Column(
+              children: [
+                _buildExperienceItem(
+                  'Mobile Apps Lead',
+                  'Sumbu Labs',
+                  'Aug 2025 - Present',
+                  'Leading mobile development initiatives for client projects. '
+                  'Driving technical decisions, code quality standards, and mentoring junior engineers.',
+                  Icons.smartphone,
+                ),
+                _buildExperienceItem(
+                  'Software Developer (Intern)',
+                  'LEN Logistics',
+                  'Jan 2025 - Present',
+                  'Built ERP system backend with .NET and frontend with Blazor. '
+                  'Developing Transport Management System (TMS) mobile app with Flutter for courier operations.',
+                  Icons.business,
+                ),
+                _buildExperienceItem(
+                  'Mobile Apps Lead',
+                  'OmahTI (IT Student Org, UGM)',
+                  'Dec 2024 - Present',
+                  'Led the mobile apps division, mentoring and training new members in Flutter. '
+                  'Organized multiple workshops and code labs for the community.',
+                  Icons.group,
+                ),
+                _buildExperienceItem(
+                  'Junior Mobile App Developer',
+                  'OmahTI',
+                  'Jun 2024 - Dec 2024',
+                  'Assisted in developing mobile apps using Flutter. '
+                  'Contributed to building features and improving development workflow.',
+                  Icons.phone_android,
+                ),
+                _buildExperienceItem(
+                  'Computer Science Student',
+                  'Universitas Gadjah Mada',
+                  '2023 - 2026 (Expected)',
+                  'Bachelor of Computer Science with focus on software engineering and mobile development.',
+                  Icons.school,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+  
+  Widget _buildExperienceItem(String title, String company, String period, String description, IconData icon) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 40),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Timeline icon
+          Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color: const Color(0xFF4285F4),
+              shape: BoxShape.circle,
+            ),
+            child: Icon(
+              icon,
+              color: Colors.white,
+              size: 24,
+            ),
+          ),
+          
+          const SizedBox(width: 24),
+          
+          // Content
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Title and period
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            title,
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xFF202124),
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            company,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xFF4285F4),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFF8F9FA),
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(
+                          color: const Color(0xFFE8EAED),
+                          width: 1,
+                        ),
+                      ),
+                      child: Text(
+                        period,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xFF5F6368),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                
+                const SizedBox(height: 12),
+                
+                // Description
+                Text(
+                  description,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: Color(0xFF5F6368),
+                    height: 1.5,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: widgets/footer_widget.dart
+================================================
+import 'package:flutter/material.dart';
+
+class FooterWidget extends StatelessWidget {
+  const FooterWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isDesktop = screenWidth > 1024;
+    
+    return Container(
+      width: double.infinity,
+      padding: EdgeInsets.symmetric(
+        horizontal: isDesktop ? 80 : 24,
+        vertical: 40,
+      ),
+      decoration: const BoxDecoration(
+        color: Color(0xFF202124),
+      ),
+      child: Column(
+        children: [
+          // Footer content
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              // Copyright
+              Text(
+                'Â© 2025 Dzikran Azka Sajidan. All rights reserved.',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.white.withOpacity(0.8),
+                ),
+              ),
+              
+              // Social links
+              Row(
+                children: [
+                  _buildSocialIcon(Icons.code, () {
+                    // TODO: Open GitHub
+                  }),
+                  const SizedBox(width: 16),
+                  _buildSocialIcon(Icons.business, () {
+                    // TODO: Open LinkedIn
+                  }),
+                  const SizedBox(width: 16),
+                  _buildSocialIcon(Icons.email, () {
+                    // TODO: Open email
+                  }),
+                ],
+              ),
+            ],
+          ),
+          
+          const SizedBox(height: 24),
+          
+          // Back to top button
+          TextButton(
+            onPressed: () {
+              // TODO: Scroll to top
+            },
+            style: TextButton.styleFrom(
+              splashFactory: NoSplash.splashFactory,
+              overlayColor: Colors.transparent,
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.keyboard_arrow_up,
+                  color: Colors.white.withOpacity(0.8),
+                  size: 20,
+                ),
+                const SizedBox(width: 4),
+                Text(
+                  'Back to top',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.white.withOpacity(0.8),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+  
+  Widget _buildSocialIcon(IconData icon, VoidCallback onTap) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(20),
+      splashFactory: NoSplash.splashFactory,
+      child: Container(
+        width: 40,
+        height: 40,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          border: Border.all(
+            color: Colors.white.withOpacity(0.3),
+            width: 1,
+          ),
+        ),
+        child: Icon(
+          icon,
+          color: Colors.white.withOpacity(0.8),
+          size: 18,
+        ),
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: widgets/header_widget.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:portfolio/constants/brand_theme.dart';
+import 'package:portfolio/utils/navigation_service.dart';
+
+class PortfolioSliverAppBar extends StatelessWidget {
+  const PortfolioSliverAppBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverAppBar(
+      backgroundColor: BrandColors.baseDark,
+      elevation: 0,
+      toolbarHeight: 80,
+      automaticallyImplyLeading: false,
+      floating: true, // Shows when scrolling up
+      snap: true,     // Snaps to show/hide
+      pinned: false,  // Doesn't stay pinned at top
+      centerTitle: true,
+      title: Container(
+        padding: const EdgeInsets.symmetric(horizontal: BrandTheme.spacing2),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _buildNavItem('ABOUT'),
+            const SizedBox(width: BrandTheme.spacing2),
+            _buildNavItem('PROJECTS'),
+            const SizedBox(width: BrandTheme.spacing2),
+            _buildNavItem('SKILLS'),
+            const SizedBox(width: BrandTheme.spacing2),
+            _buildNavItem('EXPERIENCE'),
+            const SizedBox(width: BrandTheme.spacing2),
+            _buildNavItem('CONTACT'),
+          ],
+        ),
+      ),
+    );
+  }
+  
+  Widget _buildNavItem(String title) {
+    return _TerminalNavButton(
+      title: title,
+      onPressed: () => NavigationService.scrollToSection(title),
+    );
+  }
+}
+
+class PortfolioAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const PortfolioAppBar({super.key});
+
+  @override
+  Size get preferredSize => const Size.fromHeight(80);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      backgroundColor: BrandColors.baseDark,
+      elevation: 0,
+      toolbarHeight: 80,
+      automaticallyImplyLeading: false, // Remove back button
+      centerTitle: true,
+      title: Container(
+        padding: const EdgeInsets.symmetric(horizontal: BrandTheme.spacing2),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _buildNavItem('ABOUT'),
+            const SizedBox(width: BrandTheme.spacing2),
+            _buildNavItem('PROJECTS'),
+            const SizedBox(width: BrandTheme.spacing2),
+            _buildNavItem('SKILLS'),
+            const SizedBox(width: BrandTheme.spacing2),
+            _buildNavItem('EXPERIENCE'),
+            const SizedBox(width: BrandTheme.spacing2),
+            _buildNavItem('CONTACT'),
+          ],
+        ),
+      ),
+    );
+  }
+  
+  Widget _buildNavItem(String title) {
+    return _TerminalNavButton(
+      title: title,
+      onPressed: () => NavigationService.scrollToSection(title),
+    );
+  }
+}
+
+class _TerminalNavButton extends StatefulWidget {
+  final String title;
+  final VoidCallback onPressed;
+  
+  const _TerminalNavButton({
+    required this.title,
+    required this.onPressed,
+  });
+
+  @override
+  State<_TerminalNavButton> createState() => _TerminalNavButtonState();
+}
+
+class _TerminalNavButtonState extends State<_TerminalNavButton> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        padding: const EdgeInsets.symmetric(
+          horizontal: BrandTheme.spacing2,
+          vertical: BrandTheme.spacing1,
+        ),
+        decoration: BoxDecoration(
+          border: _isHovered ? Border.all(
+            color: BrandColors.brightGreen,
+            width: 1,
+          ) : Border.all(
+            color: Colors.transparent,
+            width: 1,
+          ),
+          borderRadius: BorderRadius.zero,
+          boxShadow: _isHovered ? [
+            BoxShadow(
+              color: BrandColors.brightGreen.withOpacity(0.3),
+              blurRadius: 4,
+              spreadRadius: 1,
+            ),
+          ] : null,
+        ),
+        child: GestureDetector(
+          onTap: widget.onPressed,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                '> ',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: _isHovered ? BrandColors.brightGreen : BrandColors.softGreen,
+                   
+                ),
+              ),
+              Text(
+                widget.title,
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                  color: _isHovered ? BrandColors.brightGreen : BrandColors.cream,
+                  letterSpacing: 1.0,
+                   
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: widgets/hero_section.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:portfolio/constants/brand_theme.dart';
+import 'package:portfolio/utils/navigation_service.dart';
+import 'package:portfolio/widgets/buttons/primary_button.dart';
+import 'package:portfolio/widgets/buttons/secondary_button.dart';
+
+class HeroSection extends StatelessWidget {
+  const HeroSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isDesktop = screenWidth > 1024;
+    final isTablet = screenWidth > 768 && screenWidth <= 1024;
+    
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: BrandColors.baseDark,
+        border: Border.all(
+          color: BrandColors.brightGreen,
+          width: 2,
+        ),
+      ),
+      padding: EdgeInsets.symmetric(
+        horizontal: isDesktop ? BrandTheme.spacing10 : (isTablet ? BrandTheme.spacing5 : BrandTheme.spacing3),
+        vertical: isDesktop ? BrandTheme.spacing12 : BrandTheme.spacing10,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // Terminal prompt indicator
+          Text(
+            '> INITIALIZING_PORTFOLIO_v2.0',
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              color: BrandColors.brightGreen,
+              letterSpacing: 1.5,
+               
+            ),
+            textAlign: TextAlign.center,
+          ),
+          
+          const SizedBox(height: BrandTheme.spacing3),
+          
+          // Main heading with pixel-inspired styling
+          Container(
+            padding: const EdgeInsets.all(BrandTheme.spacing2),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: BrandColors.cream,
+                width: 1,
+              ),
+              borderRadius: BorderRadius.zero,
+            ),
+            child: Text(
+              'DZIKRAN AZKA SAJIDAN',
+              style: TextStyle(
+                fontSize: isDesktop ? 48 : (isTablet ? 36 : 28),
+                fontWeight: FontWeight.bold,
+                color: BrandColors.cream,
+                letterSpacing: 3.0,
+                height: 1.2,
+                 
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          
+          const SizedBox(height: BrandTheme.spacing3),
+          
+          // Subtitle with terminal styling
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                '> STATUS: ',
+                style: TextStyle(
+                  fontSize: isDesktop ? 18 : 16,
+                  fontWeight: FontWeight.w600,
+                  color: BrandColors.brightGreen,
+                   
+                ),
+              ),
+              Text(
+                'MOBILE_APP_DEVELOPER',
+                style: TextStyle(
+                  fontSize: isDesktop ? 18 : 16,
+                  fontWeight: FontWeight.w400,
+                  color: BrandColors.purple,
+                  letterSpacing: 1.0,
+                   
+                ),
+              ),
+            ],
+          ),
+          
+          const SizedBox(height: BrandTheme.spacing1),
+          
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                '> SPECIALIZATION: ',
+                style: TextStyle(
+                  fontSize: isDesktop ? 18 : 16,
+                  fontWeight: FontWeight.w600,
+                  color: BrandColors.brightGreen,
+                   
+                ),
+              ),
+              Text(
+                'FLUTTER_&_ENTERPRISE_SOFTWARE',
+                style: TextStyle(
+                  fontSize: isDesktop ? 18 : 16,
+                  fontWeight: FontWeight.w400,
+                  color: BrandColors.softGreen,
+                  letterSpacing: 1.0,
+                   
+                ),
+              ),
+            ],
+          ),
+          
+          const SizedBox(height: BrandTheme.spacing6),
+          
+          // Action buttons with terminal styling
+          Wrap(
+            spacing: BrandTheme.spacing2,
+            runSpacing: BrandTheme.spacing2,
+            alignment: WrapAlignment.center,
+            children: [
+              PrimaryButton(
+                text: 'View Projects',
+                onPressed: () => NavigationService.scrollToSection('PROJECTS'),
+                icon: Icons.keyboard_arrow_right,
+              ),
+              
+              SecondaryButton(
+                text: 'Contact Me',
+                onPressed: () => NavigationService.scrollToSection('CONTACT'),
+                icon: Icons.terminal,
+              ),
+            ],
+          ),
+          
+          const SizedBox(height: BrandTheme.spacing4),
+          
+          // System info footer
+          Text(
+            '[ SYSTEM_READY ] [ PORTFOLIO_LOADED ] [ SCROLL_TO_EXPLORE ]',
+            style: TextStyle(
+              fontSize: 10,
+              fontWeight: FontWeight.w400,
+              color: BrandColors.mediumGray,
+              letterSpacing: 1.0,
+               
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: widgets/projects_section.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:portfolio/widgets/buttons/text_icon_button.dart';
+
+class ProjectsSection extends StatelessWidget {
+  const ProjectsSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isDesktop = screenWidth > 1024;
+    final isTablet = screenWidth > 768 && screenWidth <= 1024;
+    
+    return Container(
+      width: double.infinity,
+      padding: EdgeInsets.symmetric(
+        horizontal: isDesktop ? 80 : (isTablet ? 40 : 24),
+        vertical: isDesktop ? 100 : 60,
+      ),
+      color: const Color(0xFFF8F9FA),
+      child: Column(
+        children: [
+          // Section title
+          Text(
+            'Featured Projects',
+            style: TextStyle(
+              fontSize: isDesktop ? 48 : (isTablet ? 40 : 32),
+              fontWeight: FontWeight.w300,
+              color: const Color(0xFF202124),
+              letterSpacing: -1.0,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          
+          const SizedBox(height: 48),
+          
+          // Projects grid
+          Container(
+            constraints: const BoxConstraints(maxWidth: 1200),
+            child: GridView.count(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              crossAxisCount: isDesktop ? 2 : 1,
+              mainAxisSpacing: 32,
+              crossAxisSpacing: 32,
+              childAspectRatio: isDesktop ? 1.3 : 0.8,
+              children: [
+                _buildProjectCard(
+                  'Indonesia CAR-dano',
+                  'Enterprise mobile application for on-site vehicle inspectors. Features offline-first capabilities, data sync, and media capture. Architected for scalability and long-term business alignment.',
+                  ['Flutter', 'Dart', 'Offline-first', 'REST APIs'],
+                  Icons.directions_car,
+                ),
+                _buildProjectCard(
+                  'Transport Management System',
+                  'Mobile app digitizing last-mile courier operations with authentication, pickup & delivery modules, barcode scanning, and real-time shipment tracking.',
+                  ['Flutter', 'ASP.NET Core', 'Barcode scanning', 'Real-time tracking'],
+                  Icons.local_shipping,
+                ),
+                _buildProjectCard(
+                  'ERP System',
+                  'Complete ERP system with .NET backend and Blazor frontend, featuring comprehensive business process management and data visualization.',
+                  ['ASP.NET Core', 'Blazor', 'SQL Server', 'C#'],
+                  Icons.business,
+                ),
+                _buildProjectCard(
+                  'Flutter Workshops',
+                  'Organized and led multiple Flutter workshops and code labs, training new developers in UI development, state management, and API integration.',
+                  ['Flutter', 'Teaching', 'Mentoring', 'Workshop facilitation'],
+                  Icons.school,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+  
+  Widget _buildProjectCard(String title, String description, List<String> technologies, IconData icon) {
+    return Container(
+      padding: const EdgeInsets.all(32),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: const Color(0xFFE8EAED),
+          width: 1,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withAlpha((0.05 * 255).round()),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Project icon
+          Container(
+            width: 60,
+            height: 60,
+            decoration: BoxDecoration(
+              color: const Color(0xFF4285F4).withAlpha((0.1 * 255).round()),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Icon(
+              icon,
+              color: const Color(0xFF4285F4),
+              size: 32,
+            ),
+          ),
+          
+          const SizedBox(height: 20),
+          
+          // Project title
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+              color: Color(0xFF202124),
+            ),
+          ),
+          
+          const SizedBox(height: 12),
+          
+          // Project description
+          Expanded(
+            child: Text(
+              description,
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+                color: Color(0xFF5F6368),
+                height: 1.5,
+              ),
+            ),
+          ),
+          
+          const SizedBox(height: 20),
+          
+          // Technologies
+          Wrap(
+            spacing: 6,
+            runSpacing: 6,
+            children: technologies.map((tech) => Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              decoration: BoxDecoration(
+                color: const Color(0xFF4285F4).withAlpha((0.1 * 255).round()),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Text(
+                tech,
+                style: const TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xFF4285F4),
+                ),
+              ),
+            )).toList(),
+          ),
+          
+          const SizedBox(height: 20),
+          
+          // Action buttons
+          Row(
+            children: [
+              TextIconButton(
+                text: 'View Demo',
+                icon: Icons.launch,
+                onPressed: () {
+                  // TODO: Open project demo
+                },
+              ),
+              const SizedBox(width: 16),
+              TextIconButton(
+                text: 'Code',
+                icon: Icons.code,
+                onPressed: () {
+                  // TODO: Open GitHub
+                },
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: widgets/skills_section.dart
+================================================
+import 'package:flutter/material.dart';
+
+class SkillsSection extends StatelessWidget {
+  const SkillsSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isDesktop = screenWidth > 1024;
+    final isTablet = screenWidth > 768 && screenWidth <= 1024;
+    
+    return Container(
+      width: double.infinity,
+      padding: EdgeInsets.symmetric(
+        horizontal: isDesktop ? 80 : (isTablet ? 40 : 24),
+        vertical: isDesktop ? 100 : 60,
+      ),
+      child: Column(
+        children: [
+          // Section title
+          Text(
+            'Skills & Technologies',
+            style: TextStyle(
+              fontSize: isDesktop ? 48 : (isTablet ? 40 : 32),
+              fontWeight: FontWeight.w300,
+              color: const Color(0xFF202124),
+              letterSpacing: -1.0,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          
+          const SizedBox(height: 48),
+          
+          // Skills grid
+          Container(
+            constraints: const BoxConstraints(maxWidth: 1200),
+            child: GridView.count(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              crossAxisCount: isDesktop ? 2 : 1,
+              mainAxisSpacing: 32,
+              crossAxisSpacing: 32,
+              childAspectRatio: isDesktop ? 2.5 : 1.8,
+              children: [
+                _buildSkillCategory(
+                  'Mobile Development',
+                  Icons.phone_android,
+                  ['Flutter', 'Dart', 'State Management', 'REST APIs', 'Offline-first apps', 'Barcode scanning'],
+                ),
+                _buildSkillCategory(
+                  'Backend & Web',
+                  Icons.web,
+                  ['ASP.NET Core', 'Blazor', 'C#', 'Microsoft SQL Server', 'JavaScript', 'Next.js'],
+                ),
+                _buildSkillCategory(
+                  'Programming Languages',
+                  Icons.code,
+                  ['Dart', 'C#', 'JavaScript', 'TypeScript', 'React.js'],
+                ),
+                _buildSkillCategory(
+                  'Tools & Practices',
+                  Icons.build,
+                  ['Git', 'Agile', 'Code Quality', 'Team Leadership', 'Mentoring'],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+  
+  Widget _buildSkillCategory(String title, IconData icon, List<String> skills) {
+    return Container(
+      padding: const EdgeInsets.all(32),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: const Color(0xFFE8EAED),
+          width: 1,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withAlpha((0.05 * 255).round()),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Category header
+          Row(
+            children: [
+              Icon(
+                icon,
+                color: const Color(0xFF4285F4),
+                size: 28,
+              ),
+              const SizedBox(width: 12),
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xFF202124),
+                ),
+              ),
+            ],
+          ),
+          
+          const SizedBox(height: 20),
+          
+          // Skills
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: skills.map((skill) => Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              decoration: BoxDecoration(
+                color: const Color(0xFFF8F9FA),
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(
+                  color: const Color(0xFFE8EAED),
+                  width: 1,
+                ),
+              ),
+              child: Text(
+                skill,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xFF5F6368),
+                ),
+              ),
+            )).toList(),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: widgets/terminal_section.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:portfolio/constants/brand_theme.dart';
+
+class TerminalSection extends StatelessWidget {
+  final String title;
+  final Widget child;
+  final Color? backgroundColor;
+  final bool showBorder;
+  final EdgeInsetsGeometry? padding;
+
+  const TerminalSection({
+    super.key,
+    required this.title,
+    required this.child,
+    this.backgroundColor,
+    this.showBorder = true,
+    this.padding,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isDesktop = screenWidth > 1024;
+    final isTablet = screenWidth > 768 && screenWidth <= 1024;
+    
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.symmetric(vertical: BrandTheme.spacing4),
+      padding: padding ?? EdgeInsets.symmetric(
+        horizontal: isDesktop ? BrandTheme.spacing10 : (isTablet ? BrandTheme.spacing5 : BrandTheme.spacing3),
+        vertical: BrandTheme.spacing8,
+      ),
+      decoration: BoxDecoration(
+        color: backgroundColor ?? BrandColors.cleanWhite,
+        border: showBorder ? Border.all(
+          color: BrandColors.baseDark,
+          width: 2,
+        ) : null,
+        borderRadius: BorderRadius.zero,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Section header with terminal prompt
+          Row(
+            children: [
+              Text(
+                '> ',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: BrandColors.brightGreen,
+                   
+                ),
+              ),
+              Text(
+                title.toUpperCase().replaceAll(' ', '_'),
+                style: TextStyle(
+                  fontSize: isDesktop ? 28 : 24,
+                  fontWeight: FontWeight.bold,
+                  color: BrandColors.baseDark,
+                  letterSpacing: 2.0,
+                   
+                ),
+              ),
+              const SizedBox(width: BrandTheme.spacing2),
+              Expanded(
+                child: Container(
+                  height: 2,
+                  color: BrandColors.brightGreen,
+                ),
+              ),
+            ],
+          ),
+          
+          const SizedBox(height: BrandTheme.spacing1),
+          
+          // Status indicator
+          Text(
+            '[ LOADING_MODULE ] [ STATUS: READY ]',
+            style: TextStyle(
+              fontSize: 10,
+              fontWeight: FontWeight.w400,
+              color: BrandColors.mediumGray,
+              letterSpacing: 1.0,
+               
+            ),
+          ),
+          
+          const SizedBox(height: BrandTheme.spacing4),
+          
+          // Content
+          child,
+        ],
+      ),
+    );
+  }
+}
+
+class GridCard extends StatefulWidget {
+  final Widget child;
+  final Color? backgroundColor;
+  final EdgeInsetsGeometry? padding;
+  final bool showHoverEffect;
+
+  const GridCard({
+    super.key,
+    required this.child,
+    this.backgroundColor,
+    this.padding,
+    this.showHoverEffect = true,
+  });
+
+  @override
+  State<GridCard> createState() => _GridCardState();
+}
+
+class _GridCardState extends State<GridCard> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: widget.showHoverEffect ? (_) => setState(() => _isHovered = true) : null,
+      onExit: widget.showHoverEffect ? (_) => setState(() => _isHovered = false) : null,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        padding: widget.padding ?? const EdgeInsets.all(BrandTheme.spacing3),
+        decoration: BoxDecoration(
+          color: widget.backgroundColor ?? BrandColors.cleanWhite,
+          border: Border.all(
+            color: _isHovered ? BrandColors.brightGreen : BrandColors.baseDark,
+            width: _isHovered ? 2 : 1,
+          ),
+          borderRadius: BorderRadius.zero,
+          boxShadow: _isHovered && widget.showHoverEffect ? [
+            BoxShadow(
+              color: BrandColors.brightGreen.withOpacity(0.2),
+              blurRadius: 8,
+              spreadRadius: 2,
+            ),
+          ] : null,
+        ),
+        child: widget.child,
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: widgets/buttons/primary_button.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:portfolio/constants/brand_theme.dart';
+
+
+class PrimaryButton extends StatefulWidget {
+  final String text;
+  final VoidCallback onPressed;
+  final bool isLoading;
+  final IconData? icon;
+
+  const PrimaryButton({
+    super.key,
+    required this.text,
+    required this.onPressed,
+    this.isLoading = false,
+    this.icon,
+  });
+
+  @override
+  State<PrimaryButton> createState() => _PrimaryButtonState();
+}
+
+class _PrimaryButtonState extends State<PrimaryButton> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        decoration: BoxDecoration(
+          color: BrandColors.brightGreen,
+          border: Border.all(
+            color: BrandColors.baseDark,
+            width: 2,
+          ),
+          borderRadius: BorderRadius.zero,
+          boxShadow: _isHovered ? [
+            BoxShadow(
+              color: BrandColors.brightGreen.withOpacity(0.4),
+              blurRadius: 8,
+              spreadRadius: 2,
+            ),
+          ] : null,
+        ),
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: widget.isLoading ? null : widget.onPressed,
+            splashFactory: NoSplash.splashFactory,
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: BrandTheme.spacing4,
+                vertical: BrandTheme.spacing2,
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (widget.icon != null) ...[
+                    Icon(
+                      widget.icon,
+                      size: 16,
+                      color: BrandColors.baseDark,
+                    ),
+                    const SizedBox(width: BrandTheme.spacing1),
+                  ],
+                  if (widget.isLoading)
+                    SizedBox(
+                      width: 16,
+                      height: 16,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        color: BrandColors.baseDark,
+                      ),
+                    )
+                  else
+                    Text(
+                      widget.text.toUpperCase(),
+                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                        color: BrandColors.baseDark,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: widgets/buttons/secondary_button.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:portfolio/constants/brand_theme.dart';
+
+class SecondaryButton extends StatefulWidget {
+  final String text;
+  final VoidCallback onPressed;
+  final bool isLoading;
+  final IconData? icon;
+
+  const SecondaryButton({
+    super.key,
+    required this.text,
+    required this.onPressed,
+    this.isLoading = false,
+    this.icon,
+  });
+
+  @override
+  State<SecondaryButton> createState() => _SecondaryButtonState();
+}
+
+class _SecondaryButtonState extends State<SecondaryButton> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        decoration: BoxDecoration(
+          color: Colors.transparent,
+          border: Border.all(
+            color: BrandColors.brightGreen,
+            width: 2,
+          ),
+          borderRadius: BorderRadius.zero,
+          boxShadow: _isHovered ? [
+            BoxShadow(
+              color: BrandColors.brightGreen.withOpacity(0.3),
+              blurRadius: 8,
+              spreadRadius: 2,
+            ),
+          ] : null,
+        ),
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: widget.isLoading ? null : widget.onPressed,
+            splashFactory: NoSplash.splashFactory,
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: BrandTheme.spacing4,
+                vertical: BrandTheme.spacing2,
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (widget.icon != null) ...[
+                    Icon(
+                      widget.icon,
+                      size: 16,
+                      color: BrandColors.brightGreen,
+                    ),
+                    const SizedBox(width: BrandTheme.spacing1),
+                  ],
+                  if (widget.isLoading)
+                    SizedBox(
+                      width: 16,
+                      height: 16,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        color: BrandColors.brightGreen,
+                      ),
+                    )
+                  else
+                    Text(
+                      widget.text.toUpperCase(),
+                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                        color: BrandColors.brightGreen,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: widgets/buttons/text_icon_button.dart
+================================================
+import 'package:flutter/material.dart';
+
+class TextIconButton extends StatelessWidget {
+  final String text;
+  final IconData icon;
+  final VoidCallback onPressed;
+  final EdgeInsetsGeometry? padding;
+  final double? fontSize;
+  final FontWeight? fontWeight;
+  final Color? color;
+  final double? iconSize;
+
+  const TextIconButton({
+    super.key,
+    required this.text,
+    required this.icon,
+    required this.onPressed,
+    this.padding = const EdgeInsets.symmetric(horizontal: 8),
+    this.fontSize = 14,
+    this.fontWeight = FontWeight.w500,
+    this.color,
+    this.iconSize = 16,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final effectiveColor = color ?? const Color(0xFF4285F4);
+
+    return TextButton.icon(
+      onPressed: onPressed,
+      icon: Icon(icon, size: iconSize),
+      label: Text(text),
+      style: TextButton.styleFrom(
+        foregroundColor: effectiveColor,
+        padding: padding ?? EdgeInsets.zero,
+        splashFactory: NoSplash.splashFactory,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(50),
+        ),
+      ),
+    );
+  }
+}
+
+

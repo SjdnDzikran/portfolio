@@ -1,58 +1,71 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/constants/brand_theme.dart';
+import 'package:portfolio/widgets/terminal_section.dart';
 
 class AboutSection extends StatelessWidget {
   const AboutSection({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Use MediaQuery for responsive layout
     final screenWidth = MediaQuery.of(context).size.width;
     final isDesktop = screenWidth > 1024;
-    final isTablet = screenWidth > 768 && screenWidth <= 1024;
-    
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.symmetric(
-        horizontal: isDesktop ? 80 : (isTablet ? 40 : 24),
-        vertical: isDesktop ? 100 : 60,
-      ),
-      color: const Color(0xFFF8F9FA),
-      child: Column(
+
+    return TerminalSection(
+      title: 'ABOUT_ME',
+      child: Flex(
+        direction: isDesktop ? Axis.horizontal : Axis.vertical,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Section title
-          Text(
-            'About Me',
-            style: TextStyle(
-              fontSize: isDesktop ? 48 : (isTablet ? 40 : 32),
-              fontWeight: FontWeight.w300,
-              color: const Color(0xFF202124),
-              letterSpacing: -1.0,
+          // Image placeholder on the left (for desktop) or top (for mobile)
+          Expanded(
+            flex: isDesktop ? 2 : 0,
+            child: Center(
+              child: Container(
+                width: isDesktop ? 280 : 200,
+                height: isDesktop ? 280 : 200,
+                decoration: BoxDecoration(
+                  border: Border.all(color: BrandColors.baseDark, width: 2),
+                  color: BrandColors.purple.withAlpha((0.1 * 255).round()),
+                ),
+                child: const Center(
+                  child: Icon(
+                    Icons.person_outline_rounded,
+                    size: 100,
+                    color: BrandColors.baseDark,
+                  ),
+                ),
+              ),
             ),
-            textAlign: TextAlign.center,
           ),
           
-          const SizedBox(height: 48),
+          // Spacing between sections
+          isDesktop 
+            ? const SizedBox(width: BrandTheme.spacing6)
+            : const SizedBox(height: BrandTheme.spacing4),
           
-          // Content
-          Container(
-            constraints: const BoxConstraints(maxWidth: 800),
-            child: Text(
-              'Junior Computer Science student at Universitas Gadjah Mada with strong experience in mobile app development '
-              '(Flutter, Dart) and enterprise software (ASP.NET Core, Blazor, SQL Server). I have a proven track record '
-              'of leading teams, delivering enterprise-grade applications, and integrating complex backend systems.\n\n'
-              'Currently serving as Mobile Apps Lead at Sumbu Labs, where I drive technical decisions, maintain code quality standards, '
-              'and mentor junior engineers. I\'m also working as a Software Developer Intern at LEN Logistics, building ERP systems '
-              'and developing mobile applications for transport management.\n\n'
-              'I\'m passionate about building scalable, user-focused software products that solve real business problems. '
-              'My experience spans from offline-first mobile applications to enterprise web systems, always focusing on '
-              'clean architecture and maintainable code.',
-              style: TextStyle(
-                fontSize: isDesktop ? 18 : 16,
-                fontWeight: FontWeight.w400,
-                color: const Color(0xFF5F6368),
-                height: 1.6,
-                letterSpacing: 0.1,
-              ),
-              textAlign: TextAlign.center,
+          // Text content on the right (for desktop) or bottom (for mobile)
+          Expanded(
+            flex: isDesktop ? 3 : 0,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Hello, I'm Dzikran Azka Sajidan.",
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+                const SizedBox(height: BrandTheme.spacing2),
+                Text(
+                  "A passionate Software Engineer specializing in building robust and scalable mobile applications with Flutter. My journey in tech is driven by a love for problem-solving and creating intuitive, user-centric experiences.",
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
+                const SizedBox(height: BrandTheme.spacing2),
+                Text(
+                  "With experience in both frontend and backend development using technologies like .NET and Blazor, I bring a holistic perspective to my projects, ensuring seamless integration and high-quality code from end to end. I thrive in collaborative environments and am always eager to learn and adapt to new challenges.",
+                   style: Theme.of(context).textTheme.bodyLarge,
+                ),
+              ],
             ),
           ),
         ],

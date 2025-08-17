@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'pages/home_page.dart';
-// import 'coming_soon_page.dart'; // Keep this for reference
+import 'package:portfolio/constants/brand_theme.dart';
+import 'package:portfolio/pages/home_page.dart';
 
 void main() {
   runApp(const PortfolioApp());
@@ -15,16 +14,8 @@ class PortfolioApp extends StatelessWidget {
     return MaterialApp(
       title: 'Dzikran Azka Sajidan - Mobile App Developer',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF4285F4), // Google Blue
-          brightness: Brightness.light,
-        ),
-        useMaterial3: true,
-        textTheme: GoogleFonts.promptTextTheme(),
-        splashFactory: NoSplash.splashFactory,
-      ),
-      home: const HomePage(), // Changed from ComingSoonPage to HomePage
+      theme: BrandTheme.theme,
+      home: const HomePage(),
     );
   }
 }

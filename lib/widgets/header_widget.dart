@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import '../utils/navigation_service.dart';
+import 'package:portfolio/constants/brand_theme.dart';
+import 'package:portfolio/utils/navigation_service.dart';
+import 'package:portfolio/widgets/buttons/terminal_nav_button.dart';
 
 class PortfolioSliverAppBar extends StatelessWidget {
   const PortfolioSliverAppBar({super.key});
@@ -7,47 +9,38 @@ class PortfolioSliverAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      backgroundColor: Colors.white,
-      elevation: 1,
-      shadowColor: Colors.grey.withAlpha(25),
+      backgroundColor: BrandColors.baseDark,
+      elevation: 0,
       toolbarHeight: 80,
       automaticallyImplyLeading: false,
       floating: true, // Shows when scrolling up
       snap: true,     // Snaps to show/hide
       pinned: false,  // Doesn't stay pinned at top
       centerTitle: true,
-      title: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _buildNavItem('About'),
-          _buildNavItem('Projects'),
-          _buildNavItem('Skills'),
-          _buildNavItem('Experience'),
-          _buildNavItem('Contact'),
-        ],
+      title: Container(
+        padding: const EdgeInsets.symmetric(horizontal: BrandTheme.spacing2),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _buildNavItem('About'),
+            const SizedBox(width: BrandTheme.spacing2),
+            _buildNavItem('Projects'),
+            const SizedBox(width: BrandTheme.spacing2),
+            _buildNavItem('Skills'),
+            const SizedBox(width: BrandTheme.spacing2),
+            _buildNavItem('Experience'),
+            const SizedBox(width: BrandTheme.spacing2),
+            _buildNavItem('Contact'),
+          ],
+        ),
       ),
     );
   }
   
   Widget _buildNavItem(String title) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: TextButton(
-        onPressed: () {
-          NavigationService.scrollToSection(title);
-        },
-        style: TextButton.styleFrom(
-          splashFactory: NoSplash.splashFactory,
-        ),
-        child: Text(
-          title,
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w400,
-            color: Color(0xFF5F6368),
-          ),
-        ),
-      ),
+    return TerminalNavButton(
+      title: title,
+      onPressed: () => NavigationService.scrollToSection(title),
     );
   }
 }
@@ -61,46 +54,35 @@ class PortfolioAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
-      elevation: 1,
-      shadowColor: Colors.grey.withAlpha(25),
+      backgroundColor: BrandColors.baseDark,
+      elevation: 0,
       toolbarHeight: 80,
       automaticallyImplyLeading: false, // Remove back button
       centerTitle: true,
-      title: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _buildNavItem('About'),
-          _buildNavItem('Projects'),
-          _buildNavItem('Skills'),
-          _buildNavItem('Experience'),
-          _buildNavItem('Contact'),
-        ],
+      title: Container(
+        padding: const EdgeInsets.symmetric(horizontal: BrandTheme.spacing2),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _buildNavItem('ABOUT'),
+            const SizedBox(width: BrandTheme.spacing2),
+            _buildNavItem('PROJECTS'),
+            const SizedBox(width: BrandTheme.spacing2),
+            _buildNavItem('SKILLS'),
+            const SizedBox(width: BrandTheme.spacing2),
+            _buildNavItem('EXPERIENCE'),
+            const SizedBox(width: BrandTheme.spacing2),
+            _buildNavItem('CONTACT'),
+          ],
+        ),
       ),
     );
   }
   
   Widget _buildNavItem(String title) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: TextButton(
-        onPressed: () {
-          NavigationService.scrollToSection(title);
-        },
-        style: TextButton.styleFrom(
-          splashFactory: NoSplash.splashFactory,
-        ),
-        child: Text(
-          title,
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w400,
-            color: Color(0xFF5F6368),
-          ),
-        ),
-      ),
+    return TerminalNavButton(
+      title: title,
+      onPressed: () => NavigationService.scrollToSection(title),
     );
   }
 }
-
-// Keep the old HeaderWidget for backward compatibility if needed
