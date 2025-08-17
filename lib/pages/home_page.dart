@@ -38,6 +38,8 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: BrandColors.manelaLight,
       body: CustomScrollView(
         controller: _scrollController,
+        // Increase cache extent to ensure sections are rendered for navigation
+        cacheExtent: 2000, // This ensures sections are rendered even when off-screen
         slivers: [
           // AppBar that hides on scroll down and shows on scroll up
           const PortfolioSliverAppBar(),

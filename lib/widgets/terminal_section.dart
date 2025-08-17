@@ -17,6 +17,30 @@ class TerminalSection extends StatelessWidget {
     this.padding,
   });
 
+  /// Determines the appropriate title color based on the background color
+  Color _getTitleColor() {
+    final bgColor = backgroundColor ?? BrandColors.cleanWhite;
+    
+    // If background is dark (baseDark), use light text
+    if (bgColor == BrandColors.baseDark) {
+      return BrandColors.cream;
+    }
+    // For all other backgrounds (light), use dark text
+    return BrandColors.baseDark;
+  }
+
+  /// Determines the appropriate status color based on the background color
+  Color _getStatusColor() {
+    final bgColor = backgroundColor ?? BrandColors.cleanWhite;
+    
+    // If background is dark (baseDark), use softer light text
+    if (bgColor == BrandColors.baseDark) {
+      return BrandColors.softGreen;
+    }
+    // For all other backgrounds (light), use medium gray
+    return BrandColors.mediumGray;
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -58,7 +82,7 @@ class TerminalSection extends StatelessWidget {
                 style: TextStyle(
                   fontSize: isDesktop ? 28 : 24,
                   fontWeight: FontWeight.bold,
-                  color: BrandColors.baseDark,
+                  color: _getTitleColor(),
                   letterSpacing: 2.0,
                   fontFamily: 'monospace',
                 ),
@@ -81,7 +105,7 @@ class TerminalSection extends StatelessWidget {
             style: TextStyle(
               fontSize: 10,
               fontWeight: FontWeight.w400,
-              color: BrandColors.mediumGray,
+              color: _getStatusColor(),
               letterSpacing: 1.0,
               fontFamily: 'monospace',
             ),
