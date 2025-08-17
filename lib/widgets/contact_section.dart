@@ -59,7 +59,7 @@ class ContactSection extends StatelessWidget {
                 Expanded(
                   child: _buildContactCard(
                     'Email',
-                    'dzikran@example.com',
+                    'sjdn.dzikran@email.com',
                     Icons.email_outlined,
                     () {
                       // TODO: Open email client
@@ -70,7 +70,7 @@ class ContactSection extends StatelessWidget {
                 Expanded(
                   child: _buildContactCard(
                     'LinkedIn',
-                    'Connect with me',
+                    'linkedin.com/in/dzikranazkasajidan',
                     Icons.business,
                     () {
                       // TODO: Open LinkedIn
@@ -81,7 +81,7 @@ class ContactSection extends StatelessWidget {
                 Expanded(
                   child: _buildContactCard(
                     'GitHub',
-                    'View my code',
+                    'github.com/SjdnDzikran',
                     Icons.code,
                     () {
                       // TODO: Open GitHub

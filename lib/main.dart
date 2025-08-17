@@ -13,7 +13,7 @@ class PortfolioApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Dzikran Azka Sajidan - Portfolio',
+      title: 'Dzikran Azka Sajidan - Mobile App Developer',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(

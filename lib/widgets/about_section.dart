@@ -36,13 +36,15 @@ class AboutSection extends StatelessWidget {
           Container(
             constraints: const BoxConstraints(maxWidth: 800),
             child: Text(
-              'I am a passionate software engineer with expertise in mobile app development and blockchain technology. '
-              'I love creating innovative solutions that bridge the gap between cutting-edge technology and real-world applications.\n\n'
-              'My journey in software development has led me to specialize in Flutter for cross-platform mobile development '
-              'and blockchain technologies for decentralized applications. I believe in writing clean, efficient code '
-              'and staying up-to-date with the latest industry trends and best practices.\n\n'
-              'When I\'m not coding, you can find me exploring new technologies, contributing to open-source projects, '
-              'or sharing knowledge with the developer community.',
+              'Junior Computer Science student at Universitas Gadjah Mada with strong experience in mobile app development '
+              '(Flutter, Dart) and enterprise software (ASP.NET Core, Blazor, SQL Server). I have a proven track record '
+              'of leading teams, delivering enterprise-grade applications, and integrating complex backend systems.\n\n'
+              'Currently serving as Mobile Apps Lead at Sumbu Labs, where I drive technical decisions, maintain code quality standards, '
+              'and mentor junior engineers. I\'m also working as a Software Developer Intern at LEN Logistics, building ERP systems '
+              'and developing mobile applications for transport management.\n\n'
+              'I\'m passionate about building scalable, user-focused software products that solve real business problems. '
+              'My experience spans from offline-first mobile applications to enterprise web systems, always focusing on '
+              'clean architecture and maintainable code.',
               style: TextStyle(
                 fontSize: isDesktop ? 18 : 16,
                 fontWeight: FontWeight.w400,

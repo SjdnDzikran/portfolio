@@ -23,7 +23,7 @@ class HeroSection extends StatelessWidget {
         children: [
           // Main heading
           Text(
-            'Software Engineer',
+            'Dzikran Azka Sajidan',
             style: TextStyle(
               fontSize: isDesktop ? 72 : (isTablet ? 56 : 40),
               fontWeight: FontWeight.w300,
@@ -38,7 +38,7 @@ class HeroSection extends StatelessWidget {
           
           // Subtitle
           Text(
-            'Specializing in Mobile App Development & Blockchain Solutions',
+            'Mobile App Developer • Flutter & Enterprise Software',
             style: TextStyle(
               fontSize: isDesktop ? 24 : (isTablet ? 20 : 18),
               fontWeight: FontWeight.w400,

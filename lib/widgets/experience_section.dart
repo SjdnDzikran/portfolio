@@ -37,34 +37,42 @@ class ExperienceSection extends StatelessWidget {
             child: Column(
               children: [
                 _buildExperienceItem(
-                  'Senior Mobile Developer',
-                  'Tech Solutions Inc.',
-                  '2023 - Present',
-                  'Leading mobile app development projects using Flutter and React Native. '
-                  'Mentoring junior developers and establishing best practices for cross-platform development.',
+                  'Mobile Apps Lead',
+                  'Sumbu Labs',
+                  'Aug 2025 - Present',
+                  'Leading mobile development initiatives for client projects. '
+                  'Driving technical decisions, code quality standards, and mentoring junior engineers.',
                   Icons.smartphone,
                 ),
                 _buildExperienceItem(
-                  'Blockchain Developer',
-                  'CryptoVentures',
-                  '2022 - 2023',
-                  'Developed smart contracts and DeFi protocols on Ethereum blockchain. '
-                  'Built decentralized applications with focus on security and gas optimization.',
-                  Icons.link,
+                  'Software Developer (Intern)',
+                  'LEN Logistics',
+                  'Jan 2025 - Present',
+                  'Built ERP system backend with .NET and frontend with Blazor. '
+                  'Developing Transport Management System (TMS) mobile app with Flutter for courier operations.',
+                  Icons.business,
                 ),
                 _buildExperienceItem(
-                  'Full Stack Developer',
-                  'Digital Innovations',
-                  '2021 - 2022',
-                  'Created web and mobile applications using modern frameworks. '
-                  'Collaborated with design teams to implement pixel-perfect user interfaces.',
-                  Icons.web,
+                  'Mobile Apps Lead',
+                  'OmahTI (IT Student Org, UGM)',
+                  'Dec 2024 - Present',
+                  'Led the mobile apps division, mentoring and training new members in Flutter. '
+                  'Organized multiple workshops and code labs for the community.',
+                  Icons.group,
                 ),
                 _buildExperienceItem(
-                  'Computer Science',
-                  'University Name',
-                  '2017 - 2021',
-                  'Bachelor\'s degree in Computer Science with focus on software engineering and distributed systems.',
+                  'Junior Mobile App Developer',
+                  'OmahTI',
+                  'Jun 2024 - Dec 2024',
+                  'Assisted in developing mobile apps using Flutter. '
+                  'Contributed to building features and improving development workflow.',
+                  Icons.phone_android,
+                ),
+                _buildExperienceItem(
+                  'Computer Science Student',
+                  'Universitas Gadjah Mada',
+                  '2023 - 2026 (Expected)',
+                  'Bachelor of Computer Science with focus on software engineering and mobile development.',
                   Icons.school,
                 ),
               ],
