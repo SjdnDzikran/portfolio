@@ -11,21 +11,34 @@ import '../widgets/footer_widget.dart';
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
+  // Define sections for lazy loading
+  static const List<Widget> _sections = [
+    HeroSection(),
+    AboutSection(),
+    SkillsSection(),
+    ProjectsSection(),
+    ExperienceSection(),
+    ContactSection(),
+    FooterWidget(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const HeaderWidget(),
-            const HeroSection(),
-            const AboutSection(),
-            const SkillsSection(),
-            const ProjectsSection(),
-            const ExperienceSection(),
-            const ContactSection(),
-            const FooterWidget(),
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) => [
+          const PortfolioSliverAppBar(),
+        ],
+        body: CustomScrollView(
+          slivers: [
+            // Sections with lazy loading using SliverChildBuilderDelegate
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) => _sections[index],
+                childCount: _sections.length,
+              ),
+            ),
           ],
         ),
       ),
