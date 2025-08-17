@@ -1,52 +1,91 @@
 import 'package:flutter/material.dart';
+import '../../constants/brand_theme.dart';
 
-class SecondaryButton extends StatelessWidget {
+class SecondaryButton extends StatefulWidget {
   final String text;
   final VoidCallback onPressed;
-  final EdgeInsetsGeometry? padding;
-  final double? fontSize;
-  final FontWeight? fontWeight;
-  final Color? borderColor;
-  final Color? textColor;
+  final bool isLoading;
+  final IconData? icon;
 
   const SecondaryButton({
     super.key,
     required this.text,
     required this.onPressed,
-    this.padding,
-    this.fontSize = 16,
-    this.fontWeight = FontWeight.w500,
-    this.borderColor,
-    this.textColor,
+    this.isLoading = false,
+    this.icon,
   });
 
   @override
-  Widget build(BuildContext context) {
-    final effectiveBorderColor = borderColor ?? const Color(0xFF4285F4);
-    final effectiveTextColor = textColor ?? const Color(0xFF4285F4);
+  State<SecondaryButton> createState() => _SecondaryButtonState();
+}
 
-    return OutlinedButton(
-      onPressed: onPressed,
-      style: OutlinedButton.styleFrom(
-        foregroundColor: effectiveTextColor,
-        padding: padding ?? const EdgeInsets.symmetric(
-          horizontal: 32,
-          vertical: 16,
+class _SecondaryButtonState extends State<SecondaryButton> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        decoration: BoxDecoration(
+          color: Colors.transparent,
+          border: Border.all(
+            color: BrandColors.brightGreen,
+            width: 2,
+          ),
+          borderRadius: BorderRadius.zero,
+          boxShadow: _isHovered ? [
+            BoxShadow(
+              color: BrandColors.brightGreen.withOpacity(0.3),
+              blurRadius: 8,
+              spreadRadius: 2,
+            ),
+          ] : null,
         ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(50),
-        ),
-        side: BorderSide(
-          color: effectiveBorderColor,
-          width: 1,
-        ),
-        splashFactory: NoSplash.splashFactory,
-      ),
-      child: Text(
-        text,
-        style: TextStyle(
-          fontSize: fontSize,
-          fontWeight: fontWeight,
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: widget.isLoading ? null : widget.onPressed,
+            splashFactory: NoSplash.splashFactory,
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: BrandTheme.spacing4,
+                vertical: BrandTheme.spacing2,
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (widget.icon != null) ...[
+                    Icon(
+                      widget.icon,
+                      size: 16,
+                      color: BrandColors.brightGreen,
+                    ),
+                    const SizedBox(width: BrandTheme.spacing1),
+                  ],
+                  if (widget.isLoading)
+                    SizedBox(
+                      width: 16,
+                      height: 16,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        color: BrandColors.brightGreen,
+                      ),
+                    )
+                  else
+                    Text(
+                      widget.text.toUpperCase(),
+                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                        color: BrandColors.brightGreen,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );

@@ -8,6 +8,7 @@ import '../widgets/experience_section.dart';
 import '../widgets/contact_section.dart';
 import '../widgets/footer_widget.dart';
 import '../utils/navigation_service.dart';
+import '../constants/brand_theme.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -44,47 +45,47 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: BrandColors.manelaLight,
       appBar: _showAppBar ? const PortfolioAppBar() : null,
       body: SingleChildScrollView(
         controller: _scrollController,
         child: Column(
           children: [
             // Hero Section (no key needed as it's always at top)
-            const HeroSection(),
+            HeroSection(),
             
             // About Section
             Container(
               key: NavigationService.getSectionKey('About'),
-              child: const AboutSection(),
+              child: AboutSection(),
             ),
             
             // Skills Section
             Container(
               key: NavigationService.getSectionKey('Skills'),
-              child: const SkillsSection(),
+              child: SkillsSection(),
             ),
             
             // Projects Section
             Container(
               key: NavigationService.getSectionKey('Projects'),
-              child: const ProjectsSection(),
+              child: ProjectsSection(),
             ),
             
             // Experience Section
             Container(
               key: NavigationService.getSectionKey('Experience'),
-              child: const ExperienceSection(),
+              child: ExperienceSection(),
             ),
             
             // Contact Section
             Container(
               key: NavigationService.getSectionKey('Contact'),
-              child: const ContactSection(),
+              child: ContactSection(),
             ),
             
             // Footer
-            const FooterWidget(),
+            FooterWidget(),
           ],
         ),
       ),
