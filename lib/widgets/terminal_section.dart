@@ -74,7 +74,7 @@ class TerminalSection extends StatelessWidget {
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: BrandColors.brightGreen,
-                  fontFamily: 'monospace',
+                   
                 ),
               ),
               Text(
@@ -84,7 +84,7 @@ class TerminalSection extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   color: _getTitleColor(),
                   letterSpacing: 2.0,
-                  fontFamily: 'monospace',
+                   
                 ),
               ),
               const SizedBox(width: BrandTheme.spacing2),
@@ -107,7 +107,7 @@ class TerminalSection extends StatelessWidget {
               fontWeight: FontWeight.w400,
               color: _getStatusColor(),
               letterSpacing: 1.0,
-              fontFamily: 'monospace',
+               
             ),
           ),
           

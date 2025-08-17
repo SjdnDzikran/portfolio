@@ -58,7 +58,7 @@ class _TerminalNavButtonState extends State<TerminalNavButton> {
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
                   color: _isHovered ? BrandColors.brightGreen : BrandColors.softGreen,
-                  fontFamily: 'monospace',
+                   
                 ),
               ),
               Text(
@@ -68,7 +68,7 @@ class _TerminalNavButtonState extends State<TerminalNavButton> {
                   fontWeight: FontWeight.w600,
                   color: _isHovered ? BrandColors.brightGreen : BrandColors.cream,
                   letterSpacing: 1.0,
-                  fontFamily: 'monospace',
+                   
                 ),
               ),
             ],

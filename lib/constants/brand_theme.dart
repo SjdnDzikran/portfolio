@@ -125,16 +125,17 @@ class BrandTheme {
     );
   }
   
-  // Spacing system - 8px multiples
-  static const double spacing1 = 8.0;   // 1x
-  static const double spacing2 = 16.0;  // 2x
-  static const double spacing3 = 24.0;  // 3x
-  static const double spacing4 = 32.0;  // 4x
-  static const double spacing5 = 40.0;  // 5x
-  static const double spacing6 = 48.0;  // 6x
-  static const double spacing8 = 64.0;  // 8x
-  static const double spacing10 = 80.0; // 10x
-  static const double spacing12 = 96.0; // 12x
+  // Spacing system - 8px multiples with 4px sub-grid
+  static const double spacing05 = 4.0;  // 0.5x (sub-grid)
+  static const double spacing1 = 8.0;   // 1x (base unit)
+  static const double spacing2 = 16.0;  // 2x (standard)
+  static const double spacing3 = 24.0;  // 3x (medium)
+  static const double spacing4 = 32.0;  // 4x (large)
+  static const double spacing5 = 40.0;  // 5x (XL)
+  static const double spacing6 = 48.0;  // 6x (XXL)
+  static const double spacing8 = 64.0;  // 8x (major)
+  static const double spacing10 = 80.0; // 10x (hero)
+  static const double spacing12 = 96.0; // 12x (max)
 }
 
 class BrandDecorations {

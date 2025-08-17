@@ -61,11 +61,11 @@ class ExperienceData {
     ExperienceData(
       title: 'COMPUTER_SCIENCE_STUDENT',
       company: 'UNIVERSITAS_GADJAH_MADA',
-      period: '2023_-_2026_(EXPECTED)',
+      period: '2023_-_2027_(EXPECTED)',
       description: 'Bachelor of Computer Science with focus on software engineering and mobile development.',
       icon: Icons.school,
       accentColor: BrandColors.mediumGray,
-      isActive: false,
+      isActive: true,
     ),
   ];
 }

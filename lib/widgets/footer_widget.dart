@@ -47,7 +47,7 @@ class FooterWidget extends StatelessWidget {
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
                     color: BrandColors.brightGreen,
-                    fontFamily: 'monospace',
+                     
                   ),
                 ),
                 const SizedBox(height: BrandTheme.spacing1),
@@ -61,7 +61,7 @@ class FooterWidget extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     color: BrandColors.cream,
                     height: 1.6,
-                    fontFamily: 'monospace',
+                     
                   ),
                 ),
               ],
@@ -84,7 +84,7 @@ class FooterWidget extends StatelessWidget {
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
                         color: BrandColors.brightGreen,
-                        fontFamily: 'monospace',
+                         
                       ),
                     ),
                     _buildNavLink('ABOUT'),
@@ -108,7 +108,7 @@ class FooterWidget extends StatelessWidget {
                       fontSize: 10,
                       fontWeight: FontWeight.bold,
                       color: BrandColors.brightGreen,
-                      fontFamily: 'monospace',
+                       
                     ),
                   ),
                   _buildSocialIcon(Icons.code, BrandColors.softGreen, () {
@@ -152,7 +152,7 @@ class FooterWidget extends StatelessWidget {
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
                       color: BrandColors.brightGreen,
-                      fontFamily: 'monospace',
+                       
                     ),
                   ),
                   Icon(
@@ -167,7 +167,7 @@ class FooterWidget extends StatelessWidget {
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
                       color: BrandColors.cream,
-                      fontFamily: 'monospace',
+                       
                     ),
                   ),
                 ],
@@ -188,7 +188,7 @@ class FooterWidget extends StatelessWidget {
           fontSize: 10,
           fontWeight: FontWeight.w400,
           color: BrandColors.cream,
-          fontFamily: 'monospace',
+           
         ),
       ),
     );

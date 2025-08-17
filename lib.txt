@@ -1400,7 +1400,7 @@ class _TerminalNavButtonState extends State<_TerminalNavButton> {
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
                   color: _isHovered ? BrandColors.brightGreen : BrandColors.softGreen,
-                  fontFamily: 'monospace',
+                   
                 ),
               ),
               Text(
@@ -1410,7 +1410,7 @@ class _TerminalNavButtonState extends State<_TerminalNavButton> {
                   fontWeight: FontWeight.w600,
                   color: _isHovered ? BrandColors.brightGreen : BrandColors.cream,
                   letterSpacing: 1.0,
-                  fontFamily: 'monospace',
+                   
                 ),
               ),
             ],
@@ -1466,7 +1466,7 @@ class HeroSection extends StatelessWidget {
               fontWeight: FontWeight.w600,
               color: BrandColors.brightGreen,
               letterSpacing: 1.5,
-              fontFamily: 'monospace',
+               
             ),
             textAlign: TextAlign.center,
           ),
@@ -1491,7 +1491,7 @@ class HeroSection extends StatelessWidget {
                 color: BrandColors.cream,
                 letterSpacing: 3.0,
                 height: 1.2,
-                fontFamily: 'monospace',
+                 
               ),
               textAlign: TextAlign.center,
             ),
@@ -1509,7 +1509,7 @@ class HeroSection extends StatelessWidget {
                   fontSize: isDesktop ? 18 : 16,
                   fontWeight: FontWeight.w600,
                   color: BrandColors.brightGreen,
-                  fontFamily: 'monospace',
+                   
                 ),
               ),
               Text(
@@ -1519,7 +1519,7 @@ class HeroSection extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                   color: BrandColors.purple,
                   letterSpacing: 1.0,
-                  fontFamily: 'monospace',
+                   
                 ),
               ),
             ],
@@ -1536,7 +1536,7 @@ class HeroSection extends StatelessWidget {
                   fontSize: isDesktop ? 18 : 16,
                   fontWeight: FontWeight.w600,
                   color: BrandColors.brightGreen,
-                  fontFamily: 'monospace',
+                   
                 ),
               ),
               Text(
@@ -1546,7 +1546,7 @@ class HeroSection extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                   color: BrandColors.softGreen,
                   letterSpacing: 1.0,
-                  fontFamily: 'monospace',
+                   
                 ),
               ),
             ],
@@ -1584,7 +1584,7 @@ class HeroSection extends StatelessWidget {
               fontWeight: FontWeight.w400,
               color: BrandColors.mediumGray,
               letterSpacing: 1.0,
-              fontFamily: 'monospace',
+               
             ),
             textAlign: TextAlign.center,
           ),
@@ -1998,7 +1998,7 @@ class TerminalSection extends StatelessWidget {
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: BrandColors.brightGreen,
-                  fontFamily: 'monospace',
+                   
                 ),
               ),
               Text(
@@ -2008,7 +2008,7 @@ class TerminalSection extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   color: BrandColors.baseDark,
                   letterSpacing: 2.0,
-                  fontFamily: 'monospace',
+                   
                 ),
               ),
               const SizedBox(width: BrandTheme.spacing2),
@@ -2031,7 +2031,7 @@ class TerminalSection extends StatelessWidget {
               fontWeight: FontWeight.w400,
               color: BrandColors.mediumGray,
               letterSpacing: 1.0,
-              fontFamily: 'monospace',
+               
             ),
           ),
           

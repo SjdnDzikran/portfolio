@@ -33,12 +33,10 @@ class HeroSection extends StatelessWidget {
           // Terminal prompt indicator
           Text(
             '> INITIALIZING_PORTFOLIO_v2.0',
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w600,
+            style: Theme.of(context).textTheme.labelMedium?.copyWith(
               color: BrandColors.brightGreen,
+              fontWeight: FontWeight.w600,
               letterSpacing: 1.5,
-              fontFamily: 'monospace',
             ),
             textAlign: TextAlign.center,
           ),
@@ -57,13 +55,11 @@ class HeroSection extends StatelessWidget {
             ),
             child: Text(
               'DZIKRAN AZKA SAJIDAN',
-              style: TextStyle(
+              style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                 fontSize: isDesktop ? 48 : (isTablet ? 36 : 28),
-                fontWeight: FontWeight.bold,
                 color: BrandColors.cream,
                 letterSpacing: 3.0,
-                height: 1.2,
-                fontFamily: 'monospace',
+                fontWeight: FontWeight.bold,
               ),
               textAlign: TextAlign.center,
             ),
@@ -77,21 +73,19 @@ class HeroSection extends StatelessWidget {
             children: [
               Text(
                 '> STATUS: ',
-                style: TextStyle(
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   fontSize: isDesktop ? 18 : 16,
-                  fontWeight: FontWeight.w600,
                   color: BrandColors.brightGreen,
-                  fontFamily: 'monospace',
+                  fontWeight: FontWeight.w600,
                 ),
               ),
               Text(
                 'MOBILE_APP_DEVELOPER',
-                style: TextStyle(
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   fontSize: isDesktop ? 18 : 16,
-                  fontWeight: FontWeight.w400,
                   color: BrandColors.purple,
+                  fontWeight: FontWeight.w400,
                   letterSpacing: 1.0,
-                  fontFamily: 'monospace',
                 ),
               ),
             ],
@@ -104,21 +98,19 @@ class HeroSection extends StatelessWidget {
             children: [
               Text(
                 '> SPECIALIZATION: ',
-                style: TextStyle(
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   fontSize: isDesktop ? 18 : 16,
-                  fontWeight: FontWeight.w600,
                   color: BrandColors.brightGreen,
-                  fontFamily: 'monospace',
+                  fontWeight: FontWeight.w600,
                 ),
               ),
               Text(
                 'FLUTTER_&_ENTERPRISE_SOFTWARE',
-                style: TextStyle(
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   fontSize: isDesktop ? 18 : 16,
-                  fontWeight: FontWeight.w400,
                   color: BrandColors.softGreen,
+                  fontWeight: FontWeight.w400,
                   letterSpacing: 1.0,
-                  fontFamily: 'monospace',
                 ),
               ),
             ],
@@ -151,12 +143,10 @@ class HeroSection extends StatelessWidget {
           // System info footer
           Text(
             '[ SYSTEM_READY ] [ PORTFOLIO_LOADED ] [ SCROLL_TO_EXPLORE ]',
-            style: TextStyle(
-              fontSize: 10,
-              fontWeight: FontWeight.w400,
+            style: Theme.of(context).textTheme.labelSmall?.copyWith(
               color: BrandColors.mediumGray,
+              fontWeight: FontWeight.w400,
               letterSpacing: 1.0,
-              fontFamily: 'monospace',
             ),
             textAlign: TextAlign.center,
           ),

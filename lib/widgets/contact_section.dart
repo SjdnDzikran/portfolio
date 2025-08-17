@@ -38,7 +38,6 @@ class ContactSection extends StatelessWidget {
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
                     color: BrandColors.brightGreen,
-                    fontFamily: 'monospace',
                   ),
                 ),
                 const SizedBox(height: BrandTheme.spacing1),
@@ -49,7 +48,6 @@ class ContactSection extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     color: BrandColors.cream,
                     height: 1.6,
-                    fontFamily: 'monospace',
                   ),
                 ),
               ],
@@ -117,7 +115,6 @@ class ContactSection extends StatelessWidget {
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
                     color: BrandColors.brightGreen,
-                    fontFamily: 'monospace',
                   ),
                 ),
                 const SizedBox(height: BrandTheme.spacing2),
@@ -135,7 +132,7 @@ class ContactSection extends StatelessWidget {
                     fontSize: 10,
                     fontWeight: FontWeight.w400,
                     color: BrandColors.mediumGray,
-                    fontFamily: 'monospace',
+                     
                   ),
                 ),
               ],
@@ -162,7 +159,7 @@ class ContactSection extends StatelessWidget {
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
                     color: BrandColors.brightGreen,
-                    fontFamily: 'monospace',
+                     
                   ),
                 ),
                 Icon(
@@ -178,7 +175,7 @@ class ContactSection extends StatelessWidget {
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
                       color: BrandColors.baseDark,
-                      fontFamily: 'monospace',
+                       
                     ),
                   ),
                 ),
@@ -193,7 +190,7 @@ class ContactSection extends StatelessWidget {
                 fontSize: 10,
                 fontWeight: FontWeight.w400,
                 color: BrandColors.mediumGray,
-                fontFamily: 'monospace',
+                 
               ),
             ),
             
@@ -206,7 +203,7 @@ class ContactSection extends StatelessWidget {
                   fontSize: 10,
                   fontWeight: FontWeight.w400,
                   color: accentColor,
-                  fontFamily: 'monospace',
+                   
                 ),
               ),
             ),

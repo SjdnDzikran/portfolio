@@ -65,7 +65,7 @@ class SkillsSection extends StatelessWidget {
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: BrandColors.brightGreen,
-                  fontFamily: 'monospace',
+                   
                 ),
               ),
               Icon(
@@ -81,7 +81,7 @@ class SkillsSection extends StatelessWidget {
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: BrandColors.baseDark,
-                    fontFamily: 'monospace',
+                     
                   ),
                 ),
               ),
@@ -98,7 +98,7 @@ class SkillsSection extends StatelessWidget {
               fontWeight: FontWeight.w400,
               color: BrandColors.mediumGray,
               letterSpacing: 1.0,
-              fontFamily: 'monospace',
+               
             ),
           ),
           
@@ -119,7 +119,7 @@ class SkillsSection extends StatelessWidget {
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
                           color: accentColor,
-                          fontFamily: 'monospace',
+                           
                         ),
                       ),
                       Expanded(
@@ -129,7 +129,7 @@ class SkillsSection extends StatelessWidget {
                             fontSize: 12,
                             fontWeight: FontWeight.w400,
                             color: BrandColors.baseDark,
-                            fontFamily: 'monospace',
+                             
                           ),
                         ),
                       ),

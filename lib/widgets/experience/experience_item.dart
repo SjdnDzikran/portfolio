@@ -95,7 +95,6 @@ class ExperienceItem extends StatelessWidget {
             fontSize: 16, // Increased from 12
             fontWeight: FontWeight.bold,
             color: isActive ? BrandColors.brightGreen : BrandColors.mediumGray,
-            fontFamily: 'monospace',
           ),
         ),
         Expanded(
@@ -105,7 +104,6 @@ class ExperienceItem extends StatelessWidget {
               fontSize: 14, // Increased from 10
               fontWeight: FontWeight.w400,
               color: isActive ? BrandColors.cream : BrandColors.mediumGray,
-              fontFamily: 'monospace',
             ),
           ),
         ),
@@ -123,7 +121,6 @@ class ExperienceItem extends StatelessWidget {
             fontSize: 20, // Increased from 16
             fontWeight: FontWeight.bold,
             color: isActive ? BrandColors.cream : BrandColors.baseDark,
-            fontFamily: 'monospace',
           ),
         ),
         
@@ -135,7 +132,6 @@ class ExperienceItem extends StatelessWidget {
             fontSize: 18, // Increased from 14
             fontWeight: FontWeight.w600,
             color: accentColor,
-            fontFamily: 'monospace',
           ),
         ),
       ],
@@ -150,7 +146,6 @@ class ExperienceItem extends StatelessWidget {
         fontWeight: FontWeight.w400,
         color: isActive ? BrandColors.cream : BrandColors.baseDark,
         height: 1.6,
-        fontFamily: 'monospace',
       ),
     );
   }

@@ -92,7 +92,7 @@ class ProjectsSection extends StatelessWidget {
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: BrandColors.baseDark,
-                        fontFamily: 'monospace',
+                         
                       ),
                     ),
                     Text(
@@ -101,7 +101,7 @@ class ProjectsSection extends StatelessWidget {
                         fontSize: 10,
                         fontWeight: FontWeight.w400,
                         color: BrandColors.mediumGray,
-                        fontFamily: 'monospace',
+                         
                       ),
                     ),
                   ],
@@ -121,7 +121,7 @@ class ProjectsSection extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 color: BrandColors.baseDark,
                 height: 1.6,
-                fontFamily: 'monospace',
+                 
               ),
             ),
           ),
@@ -135,7 +135,7 @@ class ProjectsSection extends StatelessWidget {
               fontSize: 12,
               fontWeight: FontWeight.bold,
               color: BrandColors.brightGreen,
-              fontFamily: 'monospace',
+               
             ),
           ),
           const SizedBox(height: 4),
@@ -147,7 +147,7 @@ class ProjectsSection extends StatelessWidget {
                 fontSize: 10,
                 fontWeight: FontWeight.w400,
                 color: accentColor,
-                fontFamily: 'monospace',
+                 
               ),
             ),
           )).toList(),

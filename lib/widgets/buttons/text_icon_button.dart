@@ -64,7 +64,7 @@ class _TextIconButtonState extends State<TextIconButton> {
                   fontSize: 12,
                   fontWeight: FontWeight.bold,
                   color: effectiveTextColor,
-                  fontFamily: 'monospace',
+                   
                 ),
               ),
               Icon(
@@ -80,7 +80,7 @@ class _TextIconButtonState extends State<TextIconButton> {
                   fontWeight: FontWeight.w600,
                   color: effectiveTextColor,
                   letterSpacing: 1.0,
-                  fontFamily: 'monospace',
+                  
                 ),
               ),
             ],
