@@ -64,7 +64,7 @@ class ExperienceData {
       period: '2023_-_2027_(EXPECTED)',
       description: 'Bachelor of Computer Science with focus on software engineering and mobile development.',
       icon: Icons.school,
-      accentColor: BrandColors.mediumGray,
+      accentColor: BrandColors.purple,
       isActive: true,
     ),
   ];

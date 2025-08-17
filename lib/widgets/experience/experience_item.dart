@@ -60,7 +60,7 @@ class ExperienceItem extends StatelessWidget {
       ),
       child: Icon(
         icon,
-        color: isActive ? BrandColors.baseDark : BrandColors.cleanWhite,
+        color: isActive ? BrandColors.cleanWhite : BrandColors.cleanWhite,
         size: 30, // Increased from 24
       ),
     );
