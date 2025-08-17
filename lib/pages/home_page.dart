@@ -9,54 +9,82 @@ import '../widgets/contact_section.dart';
 import '../widgets/footer_widget.dart';
 import '../utils/navigation_service.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final ScrollController _scrollController = ScrollController();
+  bool _showAppBar = false;
+
+  @override
+  void initState() {
+    super.initState();
+    NavigationService.setScrollController(_scrollController);
+    
+    _scrollController.addListener(() {
+      final shouldShow = _scrollController.offset > 200; // Show after scrolling 200px
+      if (shouldShow != _showAppBar) {
+        setState(() {
+          _showAppBar = shouldShow;
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: NestedScrollView(
-        headerSliverBuilder: (context, innerBoxIsScrolled) => [
-          const PortfolioSliverAppBar(),
-        ],
-        body: CustomScrollView(
-          slivers: [
+      appBar: _showAppBar ? const PortfolioAppBar() : null,
+      body: SingleChildScrollView(
+        controller: _scrollController,
+        child: Column(
+          children: [
             // Hero Section (no key needed as it's always at top)
-            const SliverToBoxAdapter(child: HeroSection()),
+            const HeroSection(),
             
             // About Section
-            SliverToBoxAdapter(
+            Container(
               key: NavigationService.getSectionKey('About'),
               child: const AboutSection(),
             ),
             
             // Skills Section
-            SliverToBoxAdapter(
+            Container(
               key: NavigationService.getSectionKey('Skills'),
               child: const SkillsSection(),
             ),
             
             // Projects Section
-            SliverToBoxAdapter(
+            Container(
               key: NavigationService.getSectionKey('Projects'),
               child: const ProjectsSection(),
             ),
             
             // Experience Section
-            SliverToBoxAdapter(
+            Container(
               key: NavigationService.getSectionKey('Experience'),
               child: const ExperienceSection(),
             ),
             
             // Contact Section
-            SliverToBoxAdapter(
+            Container(
               key: NavigationService.getSectionKey('Contact'),
               child: const ContactSection(),
             ),
             
             // Footer
-            const SliverToBoxAdapter(child: FooterWidget()),
+            const FooterWidget(),
           ],
         ),
       ),
