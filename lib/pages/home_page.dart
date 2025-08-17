@@ -19,21 +19,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final ScrollController _scrollController = ScrollController();
-  bool _showAppBar = false;
 
   @override
   void initState() {
     super.initState();
     NavigationService.setScrollController(_scrollController);
-    
-    _scrollController.addListener(() {
-      final shouldShow = _scrollController.offset > 200; // Show after scrolling 200px
-      if (shouldShow != _showAppBar) {
-        setState(() {
-          _showAppBar = shouldShow;
-        });
-      }
-    });
   }
 
   @override
@@ -46,48 +36,53 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: BrandColors.manelaLight,
-      appBar: _showAppBar ? const PortfolioAppBar() : null,
-      body: SingleChildScrollView(
+      body: CustomScrollView(
         controller: _scrollController,
-        child: Column(
-          children: [
-            // Hero Section (no key needed as it's always at top)
-            HeroSection(),
-            
-            // About Section
-            Container(
-              key: NavigationService.getSectionKey('About'),
-              child: AboutSection(),
-            ),
-            
-            // Skills Section
-            Container(
-              key: NavigationService.getSectionKey('Skills'),
-              child: SkillsSection(),
-            ),
-            
-            // Projects Section
-            Container(
-              key: NavigationService.getSectionKey('Projects'),
-              child: ProjectsSection(),
-            ),
-            
-            // Experience Section
-            Container(
-              key: NavigationService.getSectionKey('Experience'),
-              child: ExperienceSection(),
-            ),
-            
-            // Contact Section
-            Container(
-              key: NavigationService.getSectionKey('Contact'),
-              child: ContactSection(),
-            ),
-            
-            // Footer
-            FooterWidget(),
-          ],
-        ),
+        slivers: [
+          // AppBar that hides on scroll down and shows on scroll up
+          const PortfolioSliverAppBar(),
+          
+          // Main content
+          SliverList(
+            delegate: SliverChildListDelegate([
+              // Hero Section (no key needed as it's always at top)
+              HeroSection(),
+              
+              // About Section
+              Container(
+                key: NavigationService.getSectionKey('About'),
+                child: AboutSection(),
+              ),
+              
+              // Skills Section
+              Container(
+                key: NavigationService.getSectionKey('Skills'),
+                child: SkillsSection(),
+              ),
+              
+              // Projects Section
+              Container(
+                key: NavigationService.getSectionKey('Projects'),
+                child: ProjectsSection(),
+              ),
+              
+              // Experience Section
+              Container(
+                key: NavigationService.getSectionKey('Experience'),
+                child: ExperienceSection(),
+              ),
+              
+              // Contact Section
+              Container(
+                key: NavigationService.getSectionKey('Contact'),
+                child: ContactSection(),
+              ),
+              
+              // Footer
+              FooterWidget(),
+            ]),
+          ),
+        ],
       ),
     );
   }

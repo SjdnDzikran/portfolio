@@ -27,7 +27,8 @@ class NavigationService {
       final RenderObject? renderObject = context.findRenderObject();
       if (renderObject is RenderBox) {
         final position = renderObject.localToGlobal(Offset.zero);
-        final offset = position.dy + _scrollController!.offset - 80; // 80 for AppBar height
+        // Calculate offset considering AppBar height and current scroll position
+        final offset = position.dy + _scrollController!.offset - 100; // 100 for AppBar height + padding
         
         _scrollController!.animateTo(
           offset.clamp(0.0, _scrollController!.position.maxScrollExtent),
