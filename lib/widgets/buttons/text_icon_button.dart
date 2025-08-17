@@ -1,41 +1,90 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/constants/brand_theme.dart';
 
-class TextIconButton extends StatelessWidget {
+
+class TextIconButton extends StatefulWidget {
   final String text;
   final IconData icon;
   final VoidCallback onPressed;
-  final EdgeInsetsGeometry? padding;
-  final double? fontSize;
-  final FontWeight? fontWeight;
-  final Color? color;
-  final double? iconSize;
+  final Color? textColor;
+  final Color? iconColor;
 
   const TextIconButton({
     super.key,
     required this.text,
     required this.icon,
     required this.onPressed,
-    this.padding = const EdgeInsets.symmetric(horizontal: 8),
-    this.fontSize = 14,
-    this.fontWeight = FontWeight.w500,
-    this.color,
-    this.iconSize = 16,
+    this.textColor,
+    this.iconColor,
   });
 
   @override
-  Widget build(BuildContext context) {
-    final effectiveColor = color ?? const Color(0xFF4285F4);
+  State<TextIconButton> createState() => _TextIconButtonState();
+}
 
-    return TextButton.icon(
-      onPressed: onPressed,
-      icon: Icon(icon, size: iconSize),
-      label: Text(text),
-      style: TextButton.styleFrom(
-        foregroundColor: effectiveColor,
-        padding: padding ?? EdgeInsets.zero,
-        splashFactory: NoSplash.splashFactory,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(50),
+class _TextIconButtonState extends State<TextIconButton> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final effectiveTextColor = widget.textColor ?? BrandColors.brightGreen;
+    final effectiveIconColor = widget.iconColor ?? BrandColors.brightGreen;
+
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: GestureDetector(
+        onTap: widget.onPressed,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          padding: const EdgeInsets.symmetric(
+            horizontal: BrandTheme.spacing2,
+            vertical: BrandTheme.spacing1,
+          ),
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: _isHovered ? effectiveTextColor : Colors.transparent,
+              width: 1,
+            ),
+            borderRadius: BorderRadius.zero,
+            boxShadow: _isHovered ? [
+              BoxShadow(
+                color: effectiveTextColor.withOpacity(0.2),
+                blurRadius: 4,
+                spreadRadius: 1,
+              ),
+            ] : null,
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                '> ',
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                  color: effectiveTextColor,
+                  fontFamily: 'monospace',
+                ),
+              ),
+              Icon(
+                widget.icon,
+                size: 14,
+                color: effectiveIconColor,
+              ),
+              const SizedBox(width: BrandTheme.spacing1),
+              Text(
+                widget.text.toUpperCase().replaceAll(' ', '_'),
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                  color: effectiveTextColor,
+                  letterSpacing: 1.0,
+                  fontFamily: 'monospace',
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

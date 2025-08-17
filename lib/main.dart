@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'pages/home_page.dart';
-import 'constants/brand_theme.dart';
+import 'package:portfolio/constants/brand_theme.dart';
+import 'package:portfolio/pages/home_page.dart';
 
 void main() {
   runApp(const PortfolioApp());

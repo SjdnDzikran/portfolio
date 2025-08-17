@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../constants/brand_theme.dart';
+import '../utils/navigation_service.dart';
 
 class FooterWidget extends StatelessWidget {
   const FooterWidget({super.key});
@@ -11,40 +13,113 @@ class FooterWidget extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.symmetric(
-        horizontal: isDesktop ? 80 : 24,
-        vertical: 40,
+        horizontal: isDesktop ? BrandTheme.spacing10 : BrandTheme.spacing3,
+        vertical: BrandTheme.spacing6,
       ),
-      decoration: const BoxDecoration(
-        color: Color(0xFF202124),
+      decoration: BoxDecoration(
+        color: BrandColors.baseDark,
+        border: Border(
+          top: BorderSide(
+            color: BrandColors.brightGreen,
+            width: 2,
+          ),
+        ),
       ),
       child: Column(
         children: [
-          // Footer content
+          // Terminal-style system info
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(BrandTheme.spacing2),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: BrandColors.brightGreen,
+                width: 1,
+              ),
+              borderRadius: BorderRadius.zero,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '> SYSTEM_INFO',
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: BrandColors.brightGreen,
+                    fontFamily: 'monospace',
+                  ),
+                ),
+                const SizedBox(height: BrandTheme.spacing1),
+                Text(
+                  '© 2025 DZIKRAN_AZKA_SAJIDAN. ALL_RIGHTS_RESERVED.\n'
+                  'PORTFOLIO_VERSION: 2.0.0\n'
+                  'FRAMEWORK: FLUTTER_WEB\n'
+                  'DESIGN_SYSTEM: TERMINAL_INSPIRED',
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w400,
+                    color: BrandColors.cream,
+                    height: 1.6,
+                    fontFamily: 'monospace',
+                  ),
+                ),
+              ],
+            ),
+          ),
+          
+          const SizedBox(height: BrandTheme.spacing4),
+          
+          // Social and navigation links
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // Copyright
-              Text(
-                '© 2025 Dzikran Azka Sajidan. All rights reserved.',
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.white.withOpacity(0.8),
+              // Navigation links
+              if (isDesktop) ...[
+                Row(
+                  children: [
+                    Text(
+                      '> QUICK_NAV: ',
+                      style: TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                        color: BrandColors.brightGreen,
+                        fontFamily: 'monospace',
+                      ),
+                    ),
+                    _buildNavLink('ABOUT'),
+                    const SizedBox(width: BrandTheme.spacing2),
+                    _buildNavLink('PROJECTS'),
+                    const SizedBox(width: BrandTheme.spacing2),
+                    _buildNavLink('CONTACT'),
+                  ],
                 ),
-              ),
+              ] else ...[
+                // Mobile: Just show social links
+                Container(),
+              ],
               
               // Social links
               Row(
                 children: [
-                  _buildSocialIcon(Icons.code, () {
+                  Text(
+                    '> CONNECT: ',
+                    style: TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                      color: BrandColors.brightGreen,
+                      fontFamily: 'monospace',
+                    ),
+                  ),
+                  _buildSocialIcon(Icons.code, BrandColors.softGreen, () {
                     // TODO: Open GitHub
                   }),
-                  const SizedBox(width: 16),
-                  _buildSocialIcon(Icons.business, () {
+                  const SizedBox(width: BrandTheme.spacing1),
+                  _buildSocialIcon(Icons.business, BrandColors.purple, () {
                     // TODO: Open LinkedIn
                   }),
-                  const SizedBox(width: 16),
-                  _buildSocialIcon(Icons.email, () {
+                  const SizedBox(width: BrandTheme.spacing1),
+                  _buildSocialIcon(Icons.email, BrandColors.brightGreen, () {
                     // TODO: Open email
                   }),
                 ],
@@ -52,35 +127,51 @@ class FooterWidget extends StatelessWidget {
             ],
           ),
           
-          const SizedBox(height: 24),
+          const SizedBox(height: BrandTheme.spacing4),
           
-          // Back to top button
-          TextButton(
-            onPressed: () {
-              // TODO: Scroll to top
-            },
-            style: TextButton.styleFrom(
-              splashFactory: NoSplash.splashFactory,
-              overlayColor: Colors.transparent,
+          // Back to top terminal command
+          Container(
+            padding: const EdgeInsets.all(BrandTheme.spacing2),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: BrandColors.mediumGray,
+                width: 1,
+              ),
+              borderRadius: BorderRadius.zero,
             ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(
-                  Icons.keyboard_arrow_up,
-                  color: Colors.white.withOpacity(0.8),
-                  size: 20,
-                ),
-                const SizedBox(width: 4),
-                Text(
-                  'Back to top',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.white.withOpacity(0.8),
+            child: GestureDetector(
+              onTap: () {
+                // TODO: Scroll to top
+              },
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    '> ',
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: BrandColors.brightGreen,
+                      fontFamily: 'monospace',
+                    ),
                   ),
-                ),
-              ],
+                  Icon(
+                    Icons.keyboard_arrow_up,
+                    color: BrandColors.cream,
+                    size: 16,
+                  ),
+                  const SizedBox(width: BrandTheme.spacing1),
+                  Text(
+                    'SCROLL_TO_TOP',
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      color: BrandColors.cream,
+                      fontFamily: 'monospace',
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
@@ -88,25 +179,38 @@ class FooterWidget extends StatelessWidget {
     );
   }
   
-  Widget _buildSocialIcon(IconData icon, VoidCallback onTap) {
-    return InkWell(
+  Widget _buildNavLink(String text) {
+    return GestureDetector(
+      onTap: () => NavigationService.scrollToSection(text),
+      child: Text(
+        text,
+        style: TextStyle(
+          fontSize: 10,
+          fontWeight: FontWeight.w400,
+          color: BrandColors.cream,
+          fontFamily: 'monospace',
+        ),
+      ),
+    );
+  }
+  
+  Widget _buildSocialIcon(IconData icon, Color color, VoidCallback onTap) {
+    return GestureDetector(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(20),
-      splashFactory: NoSplash.splashFactory,
       child: Container(
-        width: 40,
-        height: 40,
+        width: 24,
+        height: 24,
         decoration: BoxDecoration(
-          shape: BoxShape.circle,
           border: Border.all(
-            color: Colors.white.withOpacity(0.3),
+            color: color,
             width: 1,
           ),
+          borderRadius: BorderRadius.zero,
         ),
         child: Icon(
           icon,
-          color: Colors.white.withOpacity(0.8),
-          size: 18,
+          color: color,
+          size: 12,
         ),
       ),
     );
