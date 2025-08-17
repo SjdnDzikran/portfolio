@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../constants/app_constants.dart';
+import 'package:portfolio/constants/app_constants.dart';
 
 class ResponsiveUtils {
   static bool isMobile(BuildContext context) {

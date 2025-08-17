@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../constants/brand_theme.dart';
+import 'package:portfolio/constants/brand_theme.dart';
 
 class TerminalSection extends StatelessWidget {
   final String title;

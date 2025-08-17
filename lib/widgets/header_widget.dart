@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../utils/navigation_service.dart';
-import '../constants/brand_theme.dart';
+import 'package:portfolio/constants/brand_theme.dart';
+import 'package:portfolio/utils/navigation_service.dart';
 
 class PortfolioSliverAppBar extends StatelessWidget {
   const PortfolioSliverAppBar({super.key});

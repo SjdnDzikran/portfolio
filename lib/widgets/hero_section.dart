@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../widgets/buttons/primary_button.dart';
-import '../widgets/buttons/secondary_button.dart';
-import '../constants/brand_theme.dart';
-import '../utils/navigation_service.dart';
+import 'package:portfolio/constants/brand_theme.dart';
+import 'package:portfolio/utils/navigation_service.dart';
+import 'package:portfolio/widgets/buttons/primary_button.dart';
+import 'package:portfolio/widgets/buttons/secondary_button.dart';
 
 class HeroSection extends StatelessWidget {
   const HeroSection({super.key});

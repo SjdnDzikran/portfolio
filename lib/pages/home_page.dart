@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import '../widgets/header_widget.dart';
-import '../widgets/hero_section.dart';
-import '../widgets/about_section.dart';
-import '../widgets/skills_section.dart';
-import '../widgets/projects_section.dart';
-import '../widgets/experience_section.dart';
-import '../widgets/contact_section.dart';
-import '../widgets/footer_widget.dart';
-import '../utils/navigation_service.dart';
-import '../constants/brand_theme.dart';
+import 'package:portfolio/widgets/header_widget.dart';
+import 'package:portfolio/widgets/hero_section.dart';
+import 'package:portfolio/widgets/about_section.dart';
+import 'package:portfolio/widgets/skills_section.dart';
+import 'package:portfolio/widgets/projects_section.dart';
+import 'package:portfolio/widgets/experience_section.dart';
+import 'package:portfolio/widgets/contact_section.dart';
+import 'package:portfolio/widgets/footer_widget.dart';
+import 'package:portfolio/utils/navigation_service.dart';
+import 'package:portfolio/constants/brand_theme.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

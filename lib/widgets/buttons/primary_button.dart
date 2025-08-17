@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../constants/brand_theme.dart';
+import 'package:portfolio/constants/brand_theme.dart';
+
 
 class PrimaryButton extends StatefulWidget {
   final String text;
