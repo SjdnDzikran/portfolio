@@ -283,22 +283,22 @@ class _HoverableSocialIconState extends State<_HoverableSocialIcon>
           height: 24,
           decoration: BoxDecoration(
             border: Border.all(
-              color: _isHovered ? BrandColors.brightGreen : widget.color,
+              color: _isHovered ? widget.color : widget.color,
               width: _isHovered ? 2 : 1,
             ),
             borderRadius: BorderRadius.zero,
             boxShadow: _isHovered ? [
-              // Primary glow
+              // Primary glow with the original color
               BoxShadow(
                 color: widget.color.withOpacity(0.4),
-                blurRadius: 6,
-                spreadRadius: 1,
-              ),
-              // Secondary neon glow
-              BoxShadow(
-                color: BrandColors.brightGreen.withOpacity(0.2),
-                blurRadius: 12,
+                blurRadius: 8,
                 spreadRadius: 2,
+              ),
+              // Secondary subtle glow
+              BoxShadow(
+                color: widget.color.withOpacity(0.2),
+                blurRadius: 16,
+                spreadRadius: 4,
               ),
             ] : null,
           ),
@@ -306,7 +306,7 @@ class _HoverableSocialIconState extends State<_HoverableSocialIcon>
             onTap: widget.onTap,
             child: Icon(
               widget.icon,
-              color: _isHovered ? BrandColors.brightGreen : widget.color,
+              color: _isHovered ? widget.color : widget.color,
               size: 12,
             ),
           ),
