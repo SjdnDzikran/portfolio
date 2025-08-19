@@ -1,9 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../constants/brand_theme.dart';
 import '../utils/navigation_service.dart';
 
 class FooterWidget extends StatelessWidget {
   const FooterWidget({super.key});
+
+  // Helper method to launch URLs
+  Future<void> _launchUrl(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      throw Exception('Could not launch $url');
+    }
+  }
+
+  // Helper method to launch email
+  Future<void> _launchEmail(String email) async {
+    final Uri uri = Uri.parse('mailto:$email');
+    if (!await launchUrl(uri)) {
+      throw Exception('Could not launch email client');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,11 +60,9 @@ class FooterWidget extends StatelessWidget {
               children: [
                 Text(
                   '> SYSTEM_INFO',
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
+                  style: Theme.of(context).textTheme.labelMedium?.copyWith(
                     color: BrandColors.brightGreen,
-                     
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 const SizedBox(height: BrandTheme.spacing1),
@@ -56,12 +71,9 @@ class FooterWidget extends StatelessWidget {
                   'PORTFOLIO_VERSION: 2.0.0\n'
                   'FRAMEWORK: FLUTTER_WEB\n'
                   'DESIGN_SYSTEM: TERMINAL_INSPIRED',
-                  style: TextStyle(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w400,
+                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
                     color: BrandColors.cream,
                     height: 1.6,
-                     
                   ),
                 ),
               ],
@@ -80,11 +92,9 @@ class FooterWidget extends StatelessWidget {
                   children: [
                     Text(
                       '> QUICK_NAV: ',
-                      style: TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold,
+                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
                         color: BrandColors.brightGreen,
-                         
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                     _buildNavLink('ABOUT'),
@@ -104,23 +114,21 @@ class FooterWidget extends StatelessWidget {
                 children: [
                   Text(
                     '> CONNECT: ',
-                    style: TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.bold,
+                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
                       color: BrandColors.brightGreen,
-                       
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   _buildSocialIcon(Icons.code, BrandColors.softGreen, () {
-                    // TODO: Open GitHub
+                    _launchUrl('https://github.com/SjdnDzikran');
                   }),
                   const SizedBox(width: BrandTheme.spacing1),
                   _buildSocialIcon(Icons.business, BrandColors.purple, () {
-                    // TODO: Open LinkedIn
+                    _launchUrl('https://www.linkedin.com/in/dzikranazkasajidan/');
                   }),
                   const SizedBox(width: BrandTheme.spacing1),
                   _buildSocialIcon(Icons.email, BrandColors.brightGreen, () {
-                    // TODO: Open email
+                    _launchEmail('sjdn.dzikran@gmail.com');
                   }),
                 ],
               ),
@@ -130,87 +138,178 @@ class FooterWidget extends StatelessWidget {
           const SizedBox(height: BrandTheme.spacing4),
           
           // Back to top terminal command
-          Container(
-            padding: const EdgeInsets.all(BrandTheme.spacing2),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: BrandColors.mediumGray,
-                width: 1,
-              ),
-              borderRadius: BorderRadius.zero,
-            ),
-            child: GestureDetector(
-              onTap: () {
-                // TODO: Scroll to top
-              },
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    '> ',
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                      color: BrandColors.brightGreen,
-                       
-                    ),
-                  ),
-                  Icon(
-                    Icons.keyboard_arrow_up,
-                    color: BrandColors.cream,
-                    size: 16,
-                  ),
-                  const SizedBox(width: BrandTheme.spacing1),
-                  Text(
-                    'SCROLL_TO_TOP',
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                      color: BrandColors.cream,
-                       
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
         ],
       ),
     );
   }
   
   Widget _buildNavLink(String text) {
-    return GestureDetector(
+    return _HoverableNavLink(
+      text: text,
       onTap: () => NavigationService.scrollToSection(text),
-      child: Text(
-        text,
-        style: TextStyle(
-          fontSize: 10,
-          fontWeight: FontWeight.w400,
-          color: BrandColors.cream,
-           
-        ),
-      ),
     );
   }
   
   Widget _buildSocialIcon(IconData icon, Color color, VoidCallback onTap) {
-    return GestureDetector(
+    return _HoverableSocialIcon(
+      icon: icon,
+      color: color,
       onTap: onTap,
-      child: Container(
-        width: 24,
-        height: 24,
+    );
+  }
+}
+
+/// Hoverable navigation link with terminal-style effects
+class _HoverableNavLink extends StatefulWidget {
+  final String text;
+  final VoidCallback onTap;
+
+  const _HoverableNavLink({
+    required this.text,
+    required this.onTap,
+  });
+
+  @override
+  State<_HoverableNavLink> createState() => _HoverableNavLinkState();
+}
+
+class _HoverableNavLinkState extends State<_HoverableNavLink> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        padding: const EdgeInsets.symmetric(
+          horizontal: BrandTheme.spacing1,
+          vertical: BrandTheme.spacing05,
+        ),
         decoration: BoxDecoration(
-          border: Border.all(
-            color: color,
+          border: _isHovered ? Border.all(
+            color: BrandColors.brightGreen,
+            width: 1,
+          ) : Border.all(
+            color: Colors.transparent,
             width: 1,
           ),
           borderRadius: BorderRadius.zero,
+          boxShadow: _isHovered ? [
+            BoxShadow(
+              color: BrandColors.brightGreen.withOpacity(0.3),
+              blurRadius: 4,
+              spreadRadius: 1,
+            ),
+          ] : null,
         ),
-        child: Icon(
-          icon,
-          color: color,
-          size: 12,
+        child: GestureDetector(
+          onTap: widget.onTap,
+          child: Text(
+            widget.text,
+            style: Theme.of(context).textTheme.labelSmall?.copyWith(
+              color: _isHovered ? BrandColors.brightGreen : BrandColors.cream,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Hoverable social icon with glow effects
+class _HoverableSocialIcon extends StatefulWidget {
+  final IconData icon;
+  final Color color;
+  final VoidCallback onTap;
+
+  const _HoverableSocialIcon({
+    required this.icon,
+    required this.color,
+    required this.onTap,
+  });
+
+  @override
+  State<_HoverableSocialIcon> createState() => _HoverableSocialIconState();
+}
+
+class _HoverableSocialIconState extends State<_HoverableSocialIcon>
+    with SingleTickerProviderStateMixin {
+  bool _isHovered = false;
+  late AnimationController _scaleController;
+  late Animation<double> _scaleAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _scaleController = AnimationController(
+      duration: const Duration(milliseconds: 150),
+      vsync: this,
+    );
+    _scaleAnimation = Tween<double>(
+      begin: 1.0,
+      end: 1.1,
+    ).animate(CurvedAnimation(
+      parent: _scaleController,
+      curve: Curves.easeOutCubic,
+    ));
+  }
+
+  @override
+  void dispose() {
+    _scaleController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) {
+        setState(() => _isHovered = true);
+        _scaleController.forward();
+      },
+      onExit: (_) {
+        setState(() => _isHovered = false);
+        _scaleController.reverse();
+      },
+      child: ScaleTransition(
+        scale: _scaleAnimation,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          width: 24,
+          height: 24,
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: _isHovered ? BrandColors.brightGreen : widget.color,
+              width: _isHovered ? 2 : 1,
+            ),
+            borderRadius: BorderRadius.zero,
+            boxShadow: _isHovered ? [
+              // Primary glow
+              BoxShadow(
+                color: widget.color.withOpacity(0.4),
+                blurRadius: 6,
+                spreadRadius: 1,
+              ),
+              // Secondary neon glow
+              BoxShadow(
+                color: BrandColors.brightGreen.withOpacity(0.2),
+                blurRadius: 12,
+                spreadRadius: 2,
+              ),
+            ] : null,
+          ),
+          child: GestureDetector(
+            onTap: widget.onTap,
+            child: Icon(
+              widget.icon,
+              color: _isHovered ? BrandColors.brightGreen : widget.color,
+              size: 12,
+            ),
+          ),
         ),
       ),
     );

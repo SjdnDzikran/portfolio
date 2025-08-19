@@ -67,4 +67,14 @@ class NavigationService {
       }
     }
   }
+
+  static void scrollToTop() {
+    if (_scrollController != null) {
+      _scrollController!.animateTo(
+        0.0,
+        duration: const Duration(milliseconds: 800),
+        curve: Curves.easeInOut,
+      );
+    }
+  }
 }
