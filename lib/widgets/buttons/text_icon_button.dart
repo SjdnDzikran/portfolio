@@ -49,7 +49,7 @@ class _TextIconButtonState extends State<TextIconButton> {
             borderRadius: BorderRadius.zero,
             boxShadow: _isHovered ? [
               BoxShadow(
-                color: effectiveTextColor.withOpacity(0.2),
+                color: effectiveTextColor.withAlpha((0.2 * 255).round()),
                 blurRadius: 4,
                 spreadRadius: 1,
               ),

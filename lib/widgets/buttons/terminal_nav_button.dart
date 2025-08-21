@@ -41,7 +41,7 @@ class _TerminalNavButtonState extends State<TerminalNavButton> {
           borderRadius: BorderRadius.zero,
           boxShadow: _isHovered ? [
             BoxShadow(
-              color: BrandColors.brightGreen.withOpacity(0.3),
+              color: BrandColors.brightGreen.withAlpha((0.3 * 255).round()),
               blurRadius: 4,
               spreadRadius: 1,
             ),

@@ -55,7 +55,7 @@ class NavigationService {
         // After scrolling, try to get the exact position if context becomes available
         Future.delayed(const Duration(milliseconds: 900), () {
           final retryContext = key?.currentContext;
-          if (retryContext != null) {
+          if (retryContext != null && retryContext.mounted) {
             Scrollable.ensureVisible(
               retryContext,
               duration: const Duration(milliseconds: 400),
@@ -65,6 +65,16 @@ class NavigationService {
           }
         });
       }
+    }
+  }
+
+  static void scrollToTop() {
+    if (_scrollController != null) {
+      _scrollController!.animateTo(
+        0.0,
+        duration: const Duration(milliseconds: 800),
+        curve: Curves.easeInOut,
+      );
     }
   }
 }
