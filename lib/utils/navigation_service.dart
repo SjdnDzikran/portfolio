@@ -55,7 +55,7 @@ class NavigationService {
         // After scrolling, try to get the exact position if context becomes available
         Future.delayed(const Duration(milliseconds: 900), () {
           final retryContext = key?.currentContext;
-          if (retryContext != null) {
+          if (retryContext != null && retryContext.mounted) {
             Scrollable.ensureVisible(
               retryContext,
               duration: const Duration(milliseconds: 400),

@@ -200,7 +200,7 @@ class _HoverableNavLinkState extends State<_HoverableNavLink> {
           borderRadius: BorderRadius.zero,
           boxShadow: _isHovered ? [
             BoxShadow(
-              color: BrandColors.brightGreen.withOpacity(0.3),
+              color: BrandColors.brightGreen.withAlpha((0.3 * 255).round()),
               blurRadius: 4,
               spreadRadius: 1,
             ),
@@ -291,13 +291,13 @@ class _HoverableSocialIconState extends State<_HoverableSocialIcon>
             boxShadow: _isHovered ? [
               // Primary glow with the original color
               BoxShadow(
-                color: widget.color.withOpacity(0.4),
+                color: widget.color.withAlpha((0.4 * 255).round()),
                 blurRadius: 8,
                 spreadRadius: 2,
               ),
               // Secondary subtle glow
               BoxShadow(
-                color: widget.color.withOpacity(0.2),
+                color: widget.color.withAlpha((0.2 * 255).round()),
                 blurRadius: 16,
                 spreadRadius: 4,
               ),
@@ -345,7 +345,7 @@ class _HoverableScrollToTopState extends State<_HoverableScrollToTop> {
           borderRadius: BorderRadius.zero,
           boxShadow: _isHovered ? [
             BoxShadow(
-              color: BrandColors.brightGreen.withOpacity(0.3),
+              color: BrandColors.brightGreen.withAlpha((0.3 * 255).round()),
               blurRadius: 6,
               spreadRadius: 2,
             ),

@@ -77,7 +77,7 @@ class _SecondaryButtonState extends State<SecondaryButton>
           boxShadow: _isHovered ? [
             // Neon glow effect
             BoxShadow(
-              color: BrandColors.brightGreen.withOpacity(0.3),
+              color: BrandColors.brightGreen.withAlpha((0.3 * 255).round()),
               blurRadius: 8,
               spreadRadius: 2,
             ),
@@ -91,8 +91,8 @@ class _SecondaryButtonState extends State<SecondaryButton>
               builder: (context, child) {
                 return Positioned.fill(
                   child: Container(
-                    color: BrandColors.brightGreen.withOpacity(
-                      _fillAnimation.value * 0.1,
+                    color: BrandColors.brightGreen.withAlpha(
+                      (_fillAnimation.value * 0.1 * 255).round(),
                     ),
                   ),
                 );

@@ -49,7 +49,7 @@ class _GridCardState extends State<GridCard> {
           borderRadius: BorderRadius.zero, // Sharp edges for pixel aesthetic
           boxShadow: _isHovered ? [
             BoxShadow(
-              color: BrandColors.brightGreen.withOpacity(0.2),
+              color: BrandColors.brightGreen.withAlpha((0.2 * 255).round()),
               blurRadius: 8,
               spreadRadius: 2,
             ),
@@ -75,7 +75,7 @@ class _GridCardState extends State<GridCard> {
     return Positioned.fill(
       child: CustomPaint(
         painter: GridPainter(
-          gridColor: BrandColors.baseDark.withOpacity(0.1),
+          gridColor: BrandColors.baseDark.withAlpha((0.1 * 255).round()),
           gridSpacing: 8.0,
         ),
       ),
@@ -156,7 +156,7 @@ class ProfileCard extends StatelessWidget {
             width: isDesktop ? 120 : 100,
             height: isDesktop ? 120 : 100,
             decoration: BoxDecoration(
-              color: BrandColors.purple.withOpacity(0.1),
+              color: BrandColors.purple.withAlpha((0.1 * 255).round()),
               border: Border.all(
                 color: BrandColors.baseDark,
                 width: 2,

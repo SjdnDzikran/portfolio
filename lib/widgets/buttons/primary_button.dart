@@ -79,13 +79,13 @@ class _PrimaryButtonState extends State<PrimaryButton>
             boxShadow: _isHovered ? [
               // Primary neon glow
               BoxShadow(
-                color: BrandColors.brightGreen.withOpacity(0.3),
+                color: BrandColors.brightGreen.withAlpha((0.3 * 255).round()),
                 blurRadius: 8,
                 spreadRadius: 2,
               ),
               // Secondary outer glow
               BoxShadow(
-                color: BrandColors.brightGreen.withOpacity(0.1),
+                color: BrandColors.brightGreen.withAlpha((0.1 * 255).round()),
                 blurRadius: 24,
                 spreadRadius: 4,
               ),

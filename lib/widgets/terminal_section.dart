@@ -159,7 +159,7 @@ class _GridCardState extends State<GridCard> {
           borderRadius: BorderRadius.zero,
           boxShadow: _isHovered && widget.showHoverEffect ? [
             BoxShadow(
-              color: BrandColors.brightGreen.withOpacity(0.2),
+              color: BrandColors.brightGreen.withAlpha((0.2 * 255).round()),
               blurRadius: 8,
               spreadRadius: 2,
             ),

@@ -150,7 +150,7 @@ class ProjectsSection extends StatelessWidget {
                  
               ),
             ),
-          )).toList(),
+          )),
           
           const SizedBox(height: BrandTheme.spacing2),
           

@@ -29,8 +29,6 @@ class BrandTheme {
         onSecondary: BrandColors.baseDark,
         error: Colors.red,
         onError: Colors.white,
-        background: BrandColors.manelaLight,
-        onBackground: BrandColors.baseDark,
         surface: BrandColors.cleanWhite,
         onSurface: BrandColors.baseDark,
       ),
@@ -168,7 +166,7 @@ class BrandDecorations {
     return BoxDecoration(
       boxShadow: [
         BoxShadow(
-          color: glowColor.withOpacity(0.3),
+          color: glowColor.withAlpha((0.3 * 255).round()),
           blurRadius: 8,
           spreadRadius: 2,
         ),
