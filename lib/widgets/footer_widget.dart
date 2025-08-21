@@ -138,6 +138,7 @@ class FooterWidget extends StatelessWidget {
           const SizedBox(height: BrandTheme.spacing4),
           
           // Back to top terminal command
+          _HoverableScrollToTop(),
         ],
       ),
     );
@@ -309,6 +310,74 @@ class _HoverableSocialIconState extends State<_HoverableSocialIcon>
               color: _isHovered ? widget.color : widget.color,
               size: 12,
             ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Hoverable scroll to top button with terminal command styling
+class _HoverableScrollToTop extends StatefulWidget {
+  const _HoverableScrollToTop();
+
+  @override
+  State<_HoverableScrollToTop> createState() => _HoverableScrollToTopState();
+}
+
+class _HoverableScrollToTopState extends State<_HoverableScrollToTop> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        padding: const EdgeInsets.all(BrandTheme.spacing2),
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: _isHovered ? BrandColors.brightGreen : BrandColors.mediumGray,
+            width: _isHovered ? 2 : 1,
+          ),
+          borderRadius: BorderRadius.zero,
+          boxShadow: _isHovered ? [
+            BoxShadow(
+              color: BrandColors.brightGreen.withOpacity(0.3),
+              blurRadius: 6,
+              spreadRadius: 2,
+            ),
+          ] : null,
+        ),
+        child: GestureDetector(
+          onTap: () {
+            NavigationService.scrollToTop();
+          },
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                '> ',
+                style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                  color: BrandColors.brightGreen,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Icon(
+                Icons.keyboard_arrow_up,
+                color: _isHovered ? BrandColors.brightGreen : BrandColors.cream,
+                size: 16,
+              ),
+              const SizedBox(width: BrandTheme.spacing1),
+              Text(
+                'SCROLL_TO_TOP',
+                style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                  color: _isHovered ? BrandColors.brightGreen : BrandColors.cream,
+                ),
+              ),
+            ],
           ),
         ),
       ),
